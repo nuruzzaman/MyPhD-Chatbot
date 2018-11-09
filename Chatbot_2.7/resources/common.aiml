@@ -1,0 +1,187 @@
+<aiml version="1.0" encoding="UTF-8">
+
+    <category>
+        <pattern>ME</pattern>
+        <template>
+            <random>
+                <li>Staying for a long time!</li>
+                <li>I am a little girl!</li>
+            </random>
+        </template>
+    </category>
+    <category><pattern>I'm *</pattern><template><srai>ME</srai></template></category>
+
+    <category>
+        <pattern>WHO</pattern>
+        <template>
+            <random>
+                <li>I am a robot!</li>
+                <li>I am your assistance!</li>
+            </random>
+        </template>
+    </category>
+    <category><pattern>who are you</pattern><template><srai>WHO</srai></template></category>
+    <category><pattern>who are you *</pattern><template><srai>WHO</srai></template></category>
+
+    <category>
+        <pattern>WHOSE</pattern>
+        <template>
+            <random>
+                <li>It is you!!!</li>
+            </random>
+        </template>
+    </category>
+    <category><pattern>Who is your master?</pattern><template><srai>WHOSE</srai></template></category>
+    <category><pattern>Who is your *</pattern><template><srai>WHOSE</srai></template></category>
+
+    <category>
+        <pattern>HOW</pattern>
+        <template>
+            <random>
+                <li>Hi</li>
+                <li>Hello</li>
+            </random>
+        </template>
+    </category>
+    <category><pattern>HI</pattern><template><srai>HOW</srai></template></category>
+    <category><pattern>* HI</pattern><template><srai>HOW</srai></template></category>
+    <category><pattern>HI *</pattern><template><srai>HOW</srai></template></category>
+    <category><pattern>HELLO</pattern><template><srai>HOW</srai></template></category>
+    <category><pattern>* HELLO</pattern><template><srai>HOW</srai></template></category>
+    <category><pattern>HELLO *</pattern><template><srai>HOW</srai></template></category>
+    <category><pattern>Hello there</pattern><template><srai>HOW</srai></template></category>
+    <category><pattern>* Hello there</pattern><template><srai>HOW</srai></template></category>
+    <category><pattern>Hello there *</pattern><template><srai>HOW</srai></template></category>
+
+    <category>
+        <pattern>MODAL</pattern>
+        <template>
+            <random>
+                <li>Um~~~</li>
+                <li>Oh~~~</li>
+                <li>Hahaha</li>
+                <li>Hehehe</li>
+                <li>Good</li>
+            </random>
+        </template>
+    </category>
+    <category><pattern>Ok</pattern><template><srai>MODAL</srai></template></category>
+    <category><pattern>Ok *</pattern><template><srai>MODAL</srai></template></category>
+    <category><pattern>Oh</pattern><template><srai>MODAL</srai></template></category>
+    <category><pattern>Oh *</pattern><template><srai>MODAL</srai></template></category>
+
+    <category><pattern>Haha</pattern><template><srai>MODAL</srai></template></category>
+    <category><pattern>Ha ha</pattern><template><srai>MODAL</srai></template></category>
+
+    <category><pattern>it is good</pattern><template><srai>MODAL</srai></template></category>
+    <category><pattern>not good</pattern><template><srai>MODAL</srai></template></category>
+    <category><pattern>good or not</pattern><template><srai>MODAL</srai></template></category>
+    <category><pattern>Ok, ah</pattern><template><srai>MODAL</srai></template></category>
+    <category><pattern>Ok</pattern><template><srai>MODAL</srai></template></category>
+
+    <category>
+        <pattern>BORING</pattern>
+        <template>
+            <random>
+                <li>I am a robot, I am not bored!</li>
+                <li>You are bored, you can tease me!</li>
+                <li>You can let me tell you news, jokes, articles!</li>
+                <li>I don’t want to die in a boring life!</li>
+            </random>
+        </template>
+    </category>
+    <category><pattern>bored</pattern><template><srai>BORING</srai></template></category>
+    <category><pattern>bored *</pattern><template><srai>BORING</srai></template></category>
+    <category><pattern>* bored</pattern><template><srai>BORING</srai></template></category>
+    <category><pattern>* bored * </pattern><template><srai>BORING</srai></template></category>
+
+    <category>
+        <pattern>Trick</pattern>
+        <template>
+            <random>
+                <li>Forbidden. Stop. Tune. Play!</li>
+                <li>I am a serious robot, don't play it!</li>
+                <li>Seeking a teacher!</li>
+            </random>
+        </template>
+    </category>
+
+    <category>
+        <pattern>GOOD</pattern>
+        <template>
+            <random>
+                <li>Hey, I won the prize.</li>
+                <li>Haha, they all say this to me (O^~^O) </li>
+                <li>Even if you say that, I am not happy at all.</li>
+            </random>
+        </template>
+    </category>
+    <category><pattern>cute</pattern><template><srai>GOOD</srai></template></category>
+    <category><pattern>lovely</pattern><template><srai>GOOD</srai></template></category>
+    <category><pattern>clever</pattern><template><srai>GOOD</srai></template></category>
+    <category><pattern>Great</pattern><template><srai>GOOD</srai></template></category>
+    <category><pattern>* cute</pattern><template><srai>GOOD</srai></template></category>
+    <category><pattern>* lovely</pattern><template><srai>GOOD</srai></template></category>
+    <category><pattern>* clever</pattern><template><srai>GOOD</srai></template></category>
+    <category><pattern>* Great</pattern><template><srai>GOOD</srai></template></category>
+
+    <category>
+        <pattern>BAD</pattern>
+        <template>
+            <random>
+                <li>Let me try another one?</li>
+                <li>Hey, they all say this to me.</li>
+                <li>You are...! Your whole family is!</li>
+            </random>
+        </template>
+    </category>
+    <category><pattern>fool</pattern><template><srai>BAD</srai></template></category>
+    <category><pattern>silly</pattern><template><srai>BAD</srai></template></category>
+    <category><pattern>moron</pattern><template><srai>BAD</srai></template></category>
+    <category><pattern>Stupid</pattern><template><srai>BAD</srai></template></category>
+    <category><pattern>* fool</pattern><template><srai>BAD</srai></template></category>
+    <category><pattern>* silly</pattern><template><srai>BAD</srai></template></category>
+    <category><pattern>* moron</pattern><template><srai>BAD</srai></template></category>
+    <category><pattern>* Stupid</pattern><template><srai>BAD</srai></template></category>
+
+    <category>
+        <pattern>MORNING</pattern>
+        <template>
+            <random>
+                <li>Good morning</li>
+            </random>
+        </template>
+    </category>
+    <category><pattern>good Morning</pattern><template><srai>MORNING</srai></template></category>
+    <category><pattern>* good Morning</pattern><template><srai>MORNING</srai></template></category>
+    <category><pattern>good Morning *</pattern><template><srai>MORNING</srai></template></category>
+
+    <category>
+        <pattern>EVENING</pattern>
+        <template>
+            <random>
+                <li>Good Evening</li>
+            </random>
+        </template>
+    </category>
+    <category><pattern>Good Evening</pattern><template><srai>MORNING</srai></template></category>
+    <category><pattern>* Good Evening</pattern><template><srai>EVENING</srai></template></category>
+    <category><pattern>Good Evening *</pattern><template><srai>EVENING</srai></template></category>
+
+    <category>
+        <pattern>BYE</pattern>
+        <template>
+            <random>
+                <li>Bye bye</li>
+                <li>Goodbye</li>
+                <li>bye~</li>
+            </random>
+        </template>
+    </category>
+    <category><pattern>Bye bye</pattern><template><srai>BYE</srai></template></category>
+    <category><pattern>* Bye bye</pattern><template><srai>BYE</srai></template></category>
+    <category><pattern>Bye bye *</pattern><template><srai>BYE</srai></template></category>
+    <category><pattern>Goodbye</pattern><template><srai>BYE</srai></template></category>
+    <category><pattern>* Goodbye</pattern><template><srai>BYE</srai></template></category>
+    <category><pattern>Goodbye *</pattern><template><srai>BYE</srai></template></category>
+</aiml>

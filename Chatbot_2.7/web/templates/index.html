@@ -1,0 +1,56 @@
+﻿<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="AI RazChatbot">
+    <meta name="keywords" content="AI RazChatbot">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>RazChatbot</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/chat.js"></script>
+</head>
+<body>
+
+<div class="speak_window">
+    <div class="speak_box">
+        <div class="answer">
+            <div class="icon left"><img src="images/ai.png"></div>
+            <div class="answer_text">
+                <p>Hello~~~ How can I help you？</p>
+                <i></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <div class="circle left">
+        <a href="">
+            <img src="images/keyboard.png">
+        </a>
+    </div>
+    <div class="chat_box left">
+        <input type="text" onKeyUp="key_up()" placeholder="ask~~~"/>
+    </div>
+    <div class="rectangle right">
+        <button onClick="send_message()">Send</button>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $(document).keydown(function (event) {
+            if (event.keyCode == 13) {
+                send_message();
+            }
+        });
+
+        $('.chat_box input').focus();
+    });
+</script>
+
+</body>
+</html>

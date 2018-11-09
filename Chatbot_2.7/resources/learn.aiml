@@ -1,0 +1,34 @@
+<aiml version="1.0.1" encoding="UTF-8">
+
+    <!-- Learning function -->
+    <category>
+    <pattern>LEARN</pattern>
+    <template>Then you teach me.</template>
+    </category>
+    <category><pattern>NO</pattern><template><srai>LEARN</srai></template></category>
+    <category><pattern>wrong</pattern><template><srai>LEARN</srai></template></category>
+    <category><pattern>wrong *</pattern><template><srai>LEARN</srai></template></category>
+    <category><pattern>Not</pattern><template><srai>LEARN</srai></template></category>
+    <category><pattern>Not *</pattern><template><srai>LEARN</srai></template></category>
+    <category><pattern>No</pattern><template><srai>LEARN</srai></template></category>
+    <category><pattern>Incorrect</pattern><template><srai>LEARN</srai></template></category>
+    <category><pattern>* Wrong *</pattern><template><srai>LEARN</srai></template></category>
+    <category><pattern>* Wrong answer *</pattern><template><srai>LEARN</srai></template></category>
+
+	<category>
+		<pattern>*</pattern>
+		<that>Then you teach me.</that>
+		<template>
+			 #LEARN#:<input index="3" />
+		</template>
+	</category>
+
+    <category>
+        <pattern>Already learn</pattern>
+        <template>
+            <learn>resources/save.aiml</learn>
+            I learned, you can ask me next time."<input index="4" />"......
+        </template>
+    </category>
+
+</aiml>
