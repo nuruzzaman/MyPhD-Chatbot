@@ -94,7 +94,7 @@ class ChatBot:
                 return self.mybot.respond('Already studied')
             # MAY BE BUG
             else:
-                return self.mybot.respond('Sorry, I don't know.')
+                return self.mybot.respond('Sorry, I don\'t know.')
 
     def save(self, question, answer):
         db = shelve.open(self.shelve_file, 'c', writeback=True)

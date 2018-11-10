@@ -152,7 +152,7 @@ class DFAFilter():
 
 def test_first_character():
     gfw = DFAFilter()
-    gfw.add("1989年")
+    gfw.add("1989")
     assert gfw.filter("1989", "*") == "1989"
 
 
