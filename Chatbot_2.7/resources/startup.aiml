@@ -1,0 +1,16 @@
+<aiml version="2.0" encoding="UTF-8">
+    
+	<!-- No suitable match and find QA from KB, WEB, RNN-->
+    <category>
+        <pattern>*</pattern>
+        <template>
+            #NONE#:<input index="1" />
+        </template>
+    </category>
+
+	
+	
+	
+	
+	
+</aiml>

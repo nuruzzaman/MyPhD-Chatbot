@@ -1,15 +1,10 @@
-﻿#!/usr/bin/python
-# -*- coding: UTF-8 -*-
-
-import ConfigParser
+﻿import ConfigParser
 import shelve
 import aiml
-import jieba
+import wordsegment as ws
 
-from crawler import Crawler
-from deeplearning import deeplearning
-from filter import *
-
+import crawler
+import deeplearning
 
 class ChatBot:
     """
@@ -22,79 +17,79 @@ class ChatBot:
         bot = ChatBot()
         print bot.response('Hello')
     """
-
+    
     def __init__(self, config_file='config.cfg'):
         config = ConfigParser.ConfigParser()
         config.read(config_file)
-        self.filter_file = config.get('resource', 'filter_file')
         self.load_file = config.get('resource', 'load_file')
         self.save_file = config.get('resource', 'save_file')
         self.shelve_file = config.get('resource', 'shelve_file')
+        self.filter_file = config.get('resource', 'filter_file')
 
-        # Initialization 
-        jieba.initialize()
-
-        # Initialize the filter
-        self.gfw = DFAFilter()
-        self.gfw.parse(self.filter_file)
-
+        # initialize
+        ws.load()
+        
         # Initialize the knowledge base
         self.mybot = aiml.Kernel()
         self.mybot.bootstrap(learnFiles=self.load_file, commands='load aiml b')
-
-        # Initialize the learning library
+        
+        # Initialize the template-based learning 
         self.template = '<aiml version="1.0" encoding="UTF-8">\n{rule}\n</aiml>'
         self.category_template = '<category><pattern>{pattern}</pattern><template>{answer}</template></category>'
 
     def response(self, message):
         # Limit word count
-        if len(message) > 60:
+        if len(message) > 100:
             return self.mybot.respond('MAX')
         elif len(message) == 0:
-            return self.mybot.respond('MIN')
-
-        # Filter sensitive words
-        message = self.gfw.filter(message, "*")
-        if message.find("*") != -1:
-            return self.mybot.respond('filter')
-
+            return self.mybot.respond('MIN')    
+        
         # End chat
         if message == 'exit' or message == 'quit':
-            return self.mybot.respond('Thank you for using RazChatbot. Goodbye')
+            return self.mybot.respond('Thank you for using Chatbot. Good Bye')         
+        
         # Start chatting
         else:
-            ########
-            # AIML #
-            ########
-            result = self.mybot.respond(' '.join(jieba.cut(message)))
-
-            # Matching mode
+            result = self.mybot.respond(' '.join(ws.segment(message)))
+            
+            # Template-based mode
             if result[0] != '#':
+                print 'Template-based mode--> ' + result
                 return result
-            # Search mode
+            
             elif result.find('#NONE#') != -1:
-                #########
-                # WebQA #
-                #########
-                #ans = Crawler.search(message)
-                ans=''
+                # KB Searching mode  #
+                ######################
+                print 'Database Searching mode--> ' + result
+                ans = ''
+                #ans = database.search(message)
                 if ans != '':
                     return ans.encode('utf-8')
-                else:
-                    ###############
-                    # Deeplearing #
-                    ###############
-                    ans = deeplearning.tuling(message)
-                    return ans.encode('utf-8')
-            # Learning mode
+                else: 
+                    # WEB Searching mode #
+                    ######################
+                    print 'Web Searching mode--> ' + result
+                    ans = crawler.search(message)
+                    if ans != '':
+                        return ans.encode('utf-8')
+                    else:
+                        # DEEP Learing- RNN #
+                        #####################
+                        print 'Neural Network mode--> ' + result
+                        ans = deeplearning.rnn_generator(message)
+                        return ans.encode('utf-8')
+            
+            # Self-Learning Mode
             elif result.find('#LEARN#') != -1:
+                print 'Learning Mode--> ' + result
                 question = result[8:]
                 answer = message
                 self.save(question, answer)
                 return self.mybot.respond('Already studied')
-            # MAY BE BUG
+       
+            # check for BUG
             else:
-                return self.mybot.respond('Sorry, I don\'t know.')
+                return self.mybot.respond('I don\'t know.')
 
     def save(self, question, answer):
         db = shelve.open(self.shelve_file, 'c', writeback=True)
@@ -114,7 +109,7 @@ class ChatBot:
 
 
 if __name__ == '__main__':
-    bot = ChatBot()
-    while True:
-        message = raw_input('ME > ')
-        print 'AI > ' + bot.response(message)
+    bot = ChatBot()	
+    while True:		
+        message = raw_input('User > ')
+        print 'Bot > ' + bot.response(message)
