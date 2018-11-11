@@ -2,20 +2,20 @@
 import shelve
 import aiml
 import wordsegment as ws
-
+import os 
 import crawler
 import deeplearning
+import knowledgebased as kb
+import mysql.connector
+
 
 class ChatBot:
     """
-        Intelligent dialogue model based on AIML and WebQA
-        1. AIML 
-        2. WebQA
-        3. Deeplearning
-
-        usage:
-        bot = ChatBot()
-        print bot.response('Hello')
+        Intelligent dialogue model based on-
+        1. Template-based- AIML 
+        2. Knowledge Based- MySQL  
+        3. Web Search 
+        4. Deep Learning: RNN 
     """
     
     def __init__(self, config_file='config.cfg'):
@@ -29,13 +29,16 @@ class ChatBot:
         # initialize
         ws.load()
         
-        # Initialize the knowledge base
+        # Initialize the KERNEL 
         self.mybot = aiml.Kernel()
-        self.mybot.bootstrap(learnFiles=self.load_file, commands='load aiml b')
         
-        # Initialize the template-based learning 
-        self.template = '<aiml version="1.0" encoding="UTF-8">\n{rule}\n</aiml>'
-        self.category_template = '<category><pattern>{pattern}</pattern><template>{answer}</template></category>'
+        # Create AI Engine 
+        if os.path.isfile("AIChatEngine.brn"):
+            # if exist, Need to overwrite the AIEngine 
+            self.mybot.bootstrap(brainFile = "AIChatEngine.brn")
+        else:
+            self.mybot.bootstrap(learnFiles=self.load_file, commands='load aiml b')
+            self.mybot.saveBrain("AIChatEngine.brn")            
 
     def response(self, message):
         # Limit word count
@@ -50,43 +53,44 @@ class ChatBot:
         
         # Start chatting
         else:
-            result = self.mybot.respond(' '.join(ws.segment(message)))
+            userAsk = self.mybot.respond(' '.join(ws.segment(message)))
             
             # Template-based mode
-            if result[0] != '#':
-                print 'Template-based mode--> ' + result
-                return result
+            if userAsk[0] != '#':
+                print 'Template-based mode--> ' + userAsk
+                return userAsk
             
-            elif result.find('#NONE#') != -1:
+            elif userAsk.find('#NONE#') != -1:
                 # KB Searching mode  #
                 ######################
-                print 'Database Searching mode--> ' + result
+                print 'Database Searching mode--> ' + userAsk
                 ans = ''
-                #ans = database.search(message)
+                ans = kb.knowledge_search(message)
+                print ans
                 if ans != '':
                     return ans.encode('utf-8')
-                else: 
+                else:
                     # WEB Searching mode #
                     ######################
-                    print 'Web Searching mode--> ' + result
+                    print 'Web Searching mode--> ' + userAsk
                     ans = crawler.search(message)
                     if ans != '':
                         return ans.encode('utf-8')
                     else:
                         # DEEP Learing- RNN #
                         #####################
-                        print 'Neural Network mode--> ' + result
+                        print 'Neural Network mode--> ' + userAsk
                         ans = deeplearning.rnn_generator(message)
                         return ans.encode('utf-8')
             
             # Self-Learning Mode
-            elif result.find('#LEARN#') != -1:
-                print 'Learning Mode--> ' + result
-                question = result[8:]
+            elif userAsk.find('#LEARN#') != -1:
+                print 'Learning Mode--> ' +userAsk
+                question = userAsk[8:]
                 answer = message
                 self.save(question, answer)
                 return self.mybot.respond('Already studied')
-       
+                
             # check for BUG
             else:
                 return self.mybot.respond('I don\'t know.')
@@ -102,7 +106,6 @@ class ChatBot:
             fp.write(self.template.format(rule='\n'.join(rules)))
 
     def forget(self):
-        import os
         os.remove(self.save_file) if os.path.exists(self.save_file) else None
         os.remove(self.shelve_file) if os.path.exists(self.shelve_file) else None
         self.mybot.bootstrap(learnFiles=self.load_file, commands='load aiml b')

@@ -10,14 +10,15 @@ def search(message):
     '''Wikipedia'''
     ### Need to Identify Entity before search from Wiki
     if message.find('einstein') != -1:
-        result += 'Ok, here\'s your information~~~\n'
         result += get_wikipedia('einstein')
+        result+= '\n'
+        result += 'You can get more information at https://www.britannica.com/biography/Albert-Einstein'
         return result
     
         
     '''Joke'''
     if message.find('joke') != -1:
-        result += 'Ok, here is joke for you~~~\n'
+        result += 'Ok, here is a joke for you~~~\n'
         result += get_joke()
         return result
 
