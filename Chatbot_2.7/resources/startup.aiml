@@ -8,7 +8,12 @@
         </template>
     </category>
 
-	
+	<category>
+        <pattern>SERVER STARTED</pattern>
+        <template>
+            Yes
+        </template>
+    </category>
 	
 	
 	

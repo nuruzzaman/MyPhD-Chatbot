@@ -1,7 +1,8 @@
-jieba
 aiml
 lxml
 beautifulsoup4
 flask
 requests
 Crawl
+wikipedia
+numpy

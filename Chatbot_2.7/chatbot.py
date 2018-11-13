@@ -76,6 +76,7 @@ class ChatBot:
                     ans = crawler.search(message)
                     if ans != '':
                         return ans.encode('utf-8')
+                        print ans
                     else:
                         # DEEP Learing- RNN #
                         #####################

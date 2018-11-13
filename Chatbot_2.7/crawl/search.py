@@ -9,14 +9,17 @@ def get_html(url):
     soup_html = BeautifulSoup(requests.get(url=url, headers=headers).content, "lxml")
     return soup_html
 
-# Google search
-def get_google(message):
-    url = 'https://www.google.com/search?source=hp&ei=uGvnW4m6B5DgrQG205bQDg&q=' + quote(message)
-    return get_html(url)
-
-
 # Wikipedia
 def get_wikipedia(message):
+    url = 'https://www.britannica.com/biography/Albert-Einstein'
+    soup_html = get_html(url)
+
+    title = soup_html.find('h1').get_text().strip()
+    topic = soup_html.find(class_='topic-identifier').get_text().strip()
+    return title + ' is a ' + topic
+
+# Britannica
+def get_britannica(message):
     url = 'https://www.britannica.com/biography/Albert-Einstein'
     soup_html = get_html(url)
 

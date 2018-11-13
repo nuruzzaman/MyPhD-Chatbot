@@ -1,4 +1,4 @@
-<aiml version="2.0" encoding="UTF-8">
+﻿<aiml version="2.0" encoding="UTF-8">
 
 	<category>
         <pattern>HI</pattern>
@@ -40,6 +40,16 @@
         </template>
     </category>
 	
+	<category>
+        <pattern>WHAT IS YOUR NAME</pattern>
+        <template>
+            <random>
+				<li>I am a AI Chatbot for your assistance. </li>
+                <li>I am a robot!</li>
+                <li>I am your assistance!</li>
+            </random>
+        </template>
+    </category>
     <category>
         <pattern>WHO * YOU</pattern>
         <template>
@@ -51,11 +61,22 @@
         </template>
     </category>
 
+	<category>
+        <pattern>* MY NAME</pattern>
+        <template>
+            <random>
+				<li>Your name is <get name="username"/></li>
+                <li>You are <get name="username"/></li>
+                <li><get name="username"/></li>
+            </random>
+        </template>
+    </category>
+	
     <category>
         <pattern>* MORNING</pattern>
         <template>
             <random>
-                <li>Good morning</li>
+                <li>Good morning, <get name="username"/></li>
             </random>
         </template>
     </category>
@@ -64,18 +85,27 @@
         <pattern>* EVENING</pattern>
         <template>
             <random>
-                <li>Good Evening</li>
+                <li>Good Evening, <get name="username"/></li>
             </random>
         </template>
     </category>
 
+	 <category>
+        <pattern>THANK YOU</pattern>
+        <template>
+            <random>
+                <li>You're welcome, <get name="username"/>.</li>
+            </random>
+        </template>
+    </category>
+	
     <category>
         <pattern>BYE</pattern>
         <template>
             <random>
-                <li>Bye bye</li>
-                <li>Goodbye</li>
-                <li>bye~</li>
+                <li>Bye bye, <get name="username"/></li>
+                <li>Goodbye, <get name="username"/></li>
+                <li>bye~ <get name="username"/></li>
             </random>
         </template>
     </category>
