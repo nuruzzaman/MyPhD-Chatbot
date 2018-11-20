@@ -1,0 +1,7 @@
+tensorflow==1.4
+grpcio
+python-firebase
+pyaudio
+pyttsx3
+google-cloud-core
+nltk==3.2.5
