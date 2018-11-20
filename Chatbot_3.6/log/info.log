@@ -1353,3 +1353,30 @@
 2018-11-20 19:02:11,957 : INFO : The server is available.
 2018-11-20 19:02:11,958 : INFO : {'properties': "{'annotators': 'pos', 'outputFormat': 'json'}", 'pipelineLanguage': 'en'}
 2018-11-20 19:02:12,024 : INFO : 127.0.0.1 - - [20/Nov/2018 19:02:12] "GET /chat?message=who%20is%20einstein HTTP/1.1" 200 -
+2018-11-20 19:44:42,297 : INFO : Using an existing server http://localhost:9000
+2018-11-20 19:44:43,318 : INFO : The server is available.
+2018-11-20 19:44:43,318 : INFO : {'properties': "{'annotators': 'pos', 'outputFormat': 'json'}", 'pipelineLanguage': 'en'}
+2018-11-20 19:44:44,098 : INFO :  * Restarting with stat
+2018-11-20 19:45:00,252 : INFO : Using an existing server http://localhost:9000
+2018-11-20 19:45:01,283 : INFO : The server is available.
+2018-11-20 19:45:01,283 : INFO : {'properties': "{'annotators': 'pos', 'outputFormat': 'json'}", 'pipelineLanguage': 'en'}
+2018-11-20 19:45:02,063 : WARNING :  * Debugger is active!
+2018-11-20 19:45:02,079 : INFO :  * Debugger PIN: 187-856-552
+2018-11-20 19:45:02,110 : INFO :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-11-20 19:45:03,803 : INFO : 127.0.0.1 - - [20/Nov/2018 19:45:03] "GET / HTTP/1.1" 200 -
+2018-11-20 19:45:08,616 : INFO : Using an existing server http://localhost:9000
+2018-11-20 19:45:09,625 : INFO : The server is available.
+2018-11-20 19:45:09,625 : INFO : {'properties': "{'annotators': 'pos', 'outputFormat': 'json'}", 'pipelineLanguage': 'en'}
+2018-11-20 19:45:09,752 : INFO : 127.0.0.1 - - [20/Nov/2018 19:45:09] "GET /chat?message=types%20of%20chatbot HTTP/1.1" 200 -
+2018-11-20 19:45:15,846 : INFO : Using an existing server http://localhost:9000
+2018-11-20 19:45:16,856 : INFO : The server is available.
+2018-11-20 19:45:16,856 : INFO : {'properties': "{'annotators': 'pos', 'outputFormat': 'json'}", 'pipelineLanguage': 'en'}
+2018-11-20 19:45:16,971 : INFO : 127.0.0.1 - - [20/Nov/2018 19:45:16] "GET /chat?message=what%20is%20a%20bot HTTP/1.1" 200 -
+2018-11-20 19:45:20,999 : INFO : Using an existing server http://localhost:9000
+2018-11-20 19:45:22,006 : INFO : The server is available.
+2018-11-20 19:45:22,006 : INFO : {'properties': "{'annotators': 'pos', 'outputFormat': 'json'}", 'pipelineLanguage': 'en'}
+2018-11-20 19:45:22,053 : INFO : 127.0.0.1 - - [20/Nov/2018 19:45:22] "GET /chat?message=who%20is%20einsteon HTTP/1.1" 200 -
+2018-11-20 19:45:27,474 : INFO : Using an existing server http://localhost:9000
+2018-11-20 19:45:28,476 : INFO : The server is available.
+2018-11-20 19:45:28,476 : INFO : {'properties': "{'annotators': 'pos', 'outputFormat': 'json'}", 'pipelineLanguage': 'en'}
+2018-11-20 19:45:28,554 : INFO : 127.0.0.1 - - [20/Nov/2018 19:45:28] "GET /chat?message=einstein HTTP/1.1" 200 -

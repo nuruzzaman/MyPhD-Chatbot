@@ -98,8 +98,7 @@ def sqlforMinimizeRecords(entityList, no_duplicate, dbcursor):
     
     if(len(entityList) ==1):
         entityList.append(entityList[0])
-    
-    
+        
     # Loop all entities through SQL 
     for entity in entityList:
         mysqlstatement = 'SELECT id, response_count, tag_id, question, response_message, keywords, message_type FROM knowledgebase WHERE question like\'%'+entity+'%\' OR keywords like\'%'+entity+'%\' OR response_message like\'%'+entity+'%\' HAVING response_message like\'%'+entityList[0]+'%\' AND response_message like\'%'+entityList[1]+'%\'  '

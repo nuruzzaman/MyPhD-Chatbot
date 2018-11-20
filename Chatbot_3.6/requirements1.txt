@@ -19,5 +19,10 @@ tqdm
 scikit-learn
 tensorlayer==1.6.3
 tensorflow==1.4
+django
+tflearn
+h5py
+scipy
+curses
 
 # python -m nltk.downloader punkt

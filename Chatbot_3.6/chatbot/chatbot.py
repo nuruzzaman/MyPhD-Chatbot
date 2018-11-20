@@ -6,9 +6,9 @@ import wordsegment as ws
 import os 
 import mysql.connector
 
-import crawler as crawler
-import deeplearning as deep
-import knowledgebased as kb
+import chatbot.crawler as crawler
+import chatbot.deeplearning as deep
+import chatbot.knowledgebased as kb
 
 from nltk import *
 from itertools import groupby

@@ -6,7 +6,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import logging
 from logging.handlers import TimedRotatingFileHandler
 
-from chatbot import ChatBot
+from chatbot.chatbot import ChatBot
 from flask import Flask, render_template, request
 
 
