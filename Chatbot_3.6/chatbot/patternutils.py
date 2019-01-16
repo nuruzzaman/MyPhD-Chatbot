@@ -1,21 +1,6 @@
-# Copyright 2017 Bo Shao. All Rights Reserved.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-# ==============================================================================
-"""This file is only used at inference time."""
 import re
 
-
+#This file is only used at inference time.
 def check_patterns_and_replace(question):
     pat_matched, new_sentence, para_list = _check_arithmetic_pattern_and_replace(question)
 
@@ -198,37 +183,37 @@ def _check_username_callme_pattern_and_replace(sentence):
 
 
 if __name__ == "__main__":
-    sentence = "My name is jack brown. Please call me Mr. Brown."
+    sentence = "My name is Mohammad. Please call me Mohammad."
     print("# {}".format(sentence))
     _, ns, _ = _check_username_callme_pattern_and_replace(sentence)
     print(ns)
 
-    sentence = "My name is Bo Shao."
+    sentence = "My name is Mohammad."
     print("# {}".format(sentence))
     _, ns, _ = _check_username_callme_pattern_and_replace(sentence)
     print(ns)
 
-    sentence = "You can call me Dr. Shao."
+    sentence = "You can call me Dr. Mohammad."
     print("# {}".format(sentence))
     _, ns, _ = _check_username_callme_pattern_and_replace(sentence)
     print(ns)
 
-    sentence = "Call me Ms. Tailor please."
+    sentence = "Call me Ms. Razbeen please."
     print("# {}".format(sentence))
     _, ns, _ = _check_username_callme_pattern_and_replace(sentence)
     print(ns)
 
-    sentence = "My name is Mark. Please call me Mark D."
+    sentence = "My name is Mohammad. Please call me zaman."
     print("# {}".format(sentence))
     _, ns, _ = _check_username_callme_pattern_and_replace(sentence)
     print(ns)
 
-    sentence = "My name is not just Shao, but Bo Shao."
+    sentence = "My name is not just Mohammad, but Mohammad Nuruzzaman."
     print("# {}".format(sentence))
     _, ns, _ = _check_not_username_pattern_and_replace(sentence)
     print(ns)
 
-    sentence = "My name is not just Shao."
+    sentence = "My name is not just Zaman."
     print("# {}".format(sentence))
     _, ns, _ = _check_not_username_pattern_and_replace(sentence)
     print(ns)

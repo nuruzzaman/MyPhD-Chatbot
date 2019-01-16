@@ -1,16 +1,15 @@
 ﻿import os
 import sys
-
+import colorama
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import logging
 from logging.handlers import TimedRotatingFileHandler
-
 from chatbot.chatbot import ChatBot
 from flask import Flask, render_template, request
+from settings import PROJECT_ROOT
 
-
-########################################
+colorama.init()
 
 def init_log(log_file='log/info.log'):
 
@@ -20,6 +19,7 @@ def init_log(log_file='log/info.log'):
     logger = logging.getLogger()
     logger.setLevel(logging.INFO)
     logger.addHandler(handler)
+    
     return logger
 
 logger = init_log()
@@ -37,9 +37,13 @@ def view():
 def response():
     data = request.args.to_dict()
     message = data['message']
+                
     if message != '':
-        answer = bot.response(message)
-        return answer
+        if message.strip() == 'exit' or message.strip() == 'quit':
+            answer = 'Thank you for using Chatbot. Good Bye' 
+        else:
+            answer = bot.response(message) 
+    return answer
 
 
 @app.route('/forget', methods=['GET'])

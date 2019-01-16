@@ -1,17 +1,3 @@
-# Copyright 2017 Bo Shao. All Rights Reserved.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-# ==============================================================================
 import codecs
 import os
 import tensorflow as tf
@@ -24,9 +10,7 @@ from chatbot.hparams import HParams
 COMMENT_LINE_STT = "#=="
 CONVERSATION_SEP = "==="
 
-AUG0_FOLDER = "Augment0"
-AUG1_FOLDER = "Augment1"
-AUG2_FOLDER = "Augment2"
+AUG_FOLDER = "Augment"
 
 MAX_LEN = 1000  # Assume no line in the training data is having more than this number of characters
 VOCAB_FILE = "vocab.txt"
@@ -181,14 +165,10 @@ class TokenizedData:
                             target_sequence_length=None)
 
     def _load_corpus(self, corpus_dir):
-        for fd in range(2, -1, -1):
+        for fd in range(0, -1, -1):
             file_list = []
             if fd == 0:
-                file_dir = os.path.join(corpus_dir, AUG0_FOLDER)
-            elif fd == 1:
-                file_dir = os.path.join(corpus_dir, AUG1_FOLDER)
-            else:
-                file_dir = os.path.join(corpus_dir, AUG2_FOLDER)
+                file_dir = os.path.join(corpus_dir, AUG_FOLDER)
 
             for data_file in sorted(os.listdir(file_dir)):
                 full_path_name = os.path.join(file_dir, data_file)

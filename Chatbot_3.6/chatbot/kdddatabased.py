@@ -5,14 +5,14 @@ import colorama
 colorama.init()
 
 # Knowledge-based (KDD)Search
-def kdd_search(entityList):     
+def kdd_search(nounEntityList):     
     
     try:
         # Connect to MySQL Database 
         connection = mysql.connector.connect(host='localhost',
                                  database='aichatbot',
                                  user='root',
-                                 password='soho123')
+                                 password='')
                                  
         if connection.is_connected():
            db_Info = connection.get_server_info()
@@ -24,7 +24,7 @@ def kdd_search(entityList):
            
            queryResultList=[]
            row_count=0
-           for entity in entityList:
+           for entity in nounEntityList:
                mysqlstatement = 'SELECT id, response_count, tag_id, question, response_message, keywords, message_type FROM knowledgebase WHERE question like\'%'+entity+'%\' OR keywords like\'%'+entity+'%\' OR response_message like\'%'+entity+'%\'  '
                dbcursor.execute(mysqlstatement)
                qres = dbcursor.fetchall()
@@ -64,7 +64,7 @@ def kdd_search(entityList):
                 
                if(len(no_duplicate) > 1):
                    print(colorama.Fore.YELLOW+'\nFound more than one records'+colorama.Fore.RESET)
-                   response = sqlforMinimizeRecords(entityList, no_duplicate, dbcursor) 
+                   response = sqlforMinimizeRecords(nounEntityList, no_duplicate, dbcursor) 
                    ans_id = response[0][0]
                    response_count = response[0][1]
                    ans_reply = response[0][4]
@@ -92,16 +92,16 @@ def kdd_search(entityList):
             #print("MySQL connection is closed")
 
 
-def sqlforMinimizeRecords(entityList, no_duplicate, dbcursor):
+def sqlforMinimizeRecords(nounEntityList, no_duplicate, dbcursor):
     ans_reply= []
     row_count = 0
     
-    if(len(entityList) ==1):
-        entityList.append(entityList[0])
+    if(len(nounEntityList) ==1):
+        nounEntityList.append(nounEntityList[0])
         
     # Loop all entities through SQL 
-    for entity in entityList:
-        mysqlstatement = 'SELECT id, response_count, tag_id, question, response_message, keywords, message_type FROM knowledgebase WHERE question like\'%'+entity+'%\' OR keywords like\'%'+entity+'%\' OR response_message like\'%'+entity+'%\' HAVING response_message like\'%'+entityList[0]+'%\' AND response_message like\'%'+entityList[1]+'%\'  '
+    for entity in nounEntityList:
+        mysqlstatement = 'SELECT id, response_count, tag_id, question, response_message, keywords, message_type FROM knowledgebase WHERE question like\'%'+entity+'%\' OR keywords like\'%'+entity+'%\' OR response_message like\'%'+entity+'%\' HAVING response_message like\'%'+nounEntityList[0]+'%\' AND response_message like\'%'+nounEntityList[1]+'%\'  '
         dbcursor.execute(mysqlstatement)
         qres = dbcursor.fetchall()
         row_count = dbcursor.rowcount

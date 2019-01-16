@@ -1,20 +1,23 @@
-﻿import json
+﻿import os
+import sys
+import json
 import requests
 import tensorflow as tf
-from bs4 import BeautifulSoup
 import colorama
+from bs4 import BeautifulSoup
+from settings import PROJECT_ROOT
+from chatbot.botpredictor import BotPredictor
 
 colorama.init()
 
 # Turing robot
-def rnn_generator(message):
+def neural_network(self, message):
     
+    ans_response = ''
+    ans_response = self.predictor.predict(self.session_id, message)
+    print(ans_response) 
     
-    
-    
-    
-    return 'Building for future AI Chatbot.\n Thank you for your patience. '
-
+    return ans_response
 
 
 if __name__ == '__main__':

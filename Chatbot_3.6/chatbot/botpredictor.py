@@ -1,17 +1,3 @@
-# Copyright 2017 Bo Shao. All Rights Reserved.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-# ==============================================================================
 import nltk
 import os
 import string
@@ -28,6 +14,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 
 class BotPredictor(object):
+    
     def __init__(self, session, corpus_dir, knbase_dir, result_dir, result_file):
         """
         Args:
@@ -62,6 +49,7 @@ class BotPredictor(object):
         self.model.saver.restore(session, os.path.join(result_dir, result_file))
 
         self.session.run(tf.tables_initializer())
+
 
     def predict(self, session_id, question, html_format=False):
         chat_session = self.session_data.get_session(session_id)
