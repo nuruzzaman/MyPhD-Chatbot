@@ -1,11 +1,18 @@
 import mysql.connector
 import collections
 import colorama
+import string
+import nltk
+from nltk import word_tokenize
+from nltk.corpus import stopwords 
+from nltk.stem import WordNetLemmatizer
 
 colorama.init()
+wordnet_lemmatizer = WordNetLemmatizer()
+stop_words = set(stopwords.words('english')) 
 
 # Knowledge-based (KDD)Search
-def kdd_search(nounEntityList):     
+def kdd_search(nounEntityList, user_input_text):     
     
     try:
         # Connect to MySQL Database 
@@ -44,12 +51,12 @@ def kdd_search(nounEntityList):
            ans_id = 0 
            response_count = 0
            if (row_count ==0):
-               # retrun empty for Web Search and RNN functions 
+               # retrun empty for Web Search and DRNN functions 
                ans_reply = '' 
            elif (row_count ==1):
                ans_id = queryResultList[0][0]
                response_count = queryResultList[0][1]
-               ans_reply = queryResultList[0][4]
+               ans_reply = queryResultList[0][4]                            
            else:
                # Identify records that are duplicate
                #ans_reply = [item for item, count in collections.Counter(queryResultList).items() if count > 1]
@@ -75,14 +82,17 @@ def kdd_search(nounEntityList):
                    response_count = queryResultList[0][1]
                    ans_reply = queryResultList[0][4]
                else:
-                   ans_reply = ''
-               
+                   ans_reply = ''                            
+           
            # Update databse that how many times question being answered  
            
+           # Calculate Jaccard similarity
+           similarity_ratio = token_match(user_input_text, ans_reply)
+           print(ans_reply,"\t", similarity_ratio)
     
         return ans_reply
     
-    except Error as e :
+    except Error as e:
         print ("Error while connecting to MySQL", e)
     finally:
         # Closing database connection
@@ -90,6 +100,31 @@ def kdd_search(nounEntityList):
             dbcursor.close()
             connection.close()
             #print("MySQL connection is closed")
+
+def token_match(a, b):
+    # Question-> tokens_a --> target_sentence  
+    tokens_a = [token.lower().strip(string.punctuation) for token in nltk.tokenize.word_tokenize(a) \
+                if token.lower().strip(string.punctuation) ]
+    # Answers -> tokens_b -> ans_sentence 
+    word_token_b = [token.lower().strip(string.punctuation) for token in nltk.tokenize.word_tokenize(b) \
+                if token.lower().strip(string.punctuation) ]
+                
+    # Tokenization, Lemmatization and Removing Words 
+    filtered_sentence = [w for w in word_token_b if not w in stop_words] 
+    filtered_stop_words = [] 
+    for w in word_token_b: 
+        if w not in stop_words: 
+            filtered_stop_words.append(w) 
+    tokens_b = [] 
+    for word in filtered_stop_words:
+        tokens_b.append(wordnet_lemmatizer.lemmatize(word, pos="v")) 
+    
+    print('a--> ', tokens_a)
+    print('b-->', tokens_b) 
+    # Calculate Jaccard similarity
+    ratio = len(set(tokens_a).intersection(tokens_b)) / float(len(set(tokens_a).union(tokens_b)))
+    
+    return ratio
 
 
 def sqlforMinimizeRecords(nounEntityList, no_duplicate, dbcursor):
@@ -113,7 +148,6 @@ def sqlforMinimizeRecords(nounEntityList, no_duplicate, dbcursor):
         print('------------------------------------------------------------\n ')
         
     return ans_reply
-
-        
+       
 if __name__ == '__main__':
     print (kdd_search('Knowledge-based (KDD)Search'))

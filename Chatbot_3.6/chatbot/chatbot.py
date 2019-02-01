@@ -6,13 +6,13 @@ import wordsegment as ws
 import os 
 import sys
 import string
+import json
 
-import mysql.connector
 import tensorflow as tf
 from nltk.corpus import wordnet as wn
 from nltk.stem import WordNetLemmatizer
-from nltk.corpus import stopwords 
-from nltk.tokenize import word_tokenize 
+from nltk.corpus import stopwords
+from nltk.tree import ParentedTree, Tree
 
 from itertools import groupby
 from stanfordcorenlp import StanfordCoreNLP
@@ -22,9 +22,6 @@ import chatbot.deeplearning as deep
 import chatbot.kdddatabased as kb
 from settings import PROJECT_ROOT
 from chatbot.botpredictor import BotPredictor
-
-
-
 
 class ChatBot:
     """
@@ -40,8 +37,7 @@ class ChatBot:
     ws.load()
     #nltk.download()
     
-    
-    def __init__(self, config_file='config.cfg'):
+    def __init__(self, config_file='config.cfg', host='http://localhost', port=9000):
         config = configparser.ConfigParser()
         config.read(config_file)
         self.load_file = config.get('resource', 'load_file')
@@ -67,8 +63,13 @@ class ChatBot:
             self.mybot.saveBrain("model\AIChatEngine.brn")
             
         # Use an existing server: StanfordCoreNLP
-        self.nlp = StanfordCoreNLP('http://localhost', port=9000)
-
+        self.nlp = StanfordCoreNLP(host, port=port, timeout=30000)
+        self.props = {
+            'annotators': 'tokenize,ssplit,pos,lemma,ner,parse,depparse,dcoref,relation',
+            'pipelineLanguage': 'en',
+            'outputFormat': 'json'
+        }
+         
 ################################################################
             
     def response(self, user_message):
@@ -87,13 +88,14 @@ class ChatBot:
             
             
             # Init Lemmatization 
-            wordnet_lemmatizer = WordNetLemmatizer()            
+            wordnet_lemmatizer = WordNetLemmatizer()
             
-            # User Input Sentence Tokenization 
-            word_tokens = word_tokenize(user_message) 
+            # User Sentence Tokenization 
+            word_tokens = self.nlp.word_tokenize(user_message)
             
             # Removing stopwords
             stop_words = set(stopwords.words('english')) 
+            #stopwords.extend(string.punctuation)
             filtered_sentence = [w for w in word_tokens if not w in stop_words] 
             filtered_stop_words = [] 
             for w in word_tokens: 
@@ -106,25 +108,35 @@ class ChatBot:
                 final_sentence.append(wordnet_lemmatizer.lemmatize(word, pos="v")) 
                 print ("{0:10}{1:5}{2:20}".format(word, '--> ', wordnet_lemmatizer.lemmatize(word, pos="v")))
             
+            #print(colorama.Fore.GREEN+'\n********************* Dependency Parser ********************* '+colorama.Fore.RESET) 
+            #dependency_parser = self.nlp.dependency_parse(' '.join(final_sentence))
+            #print(dependency_parser)
             
             # POS Tagger 
             postagger = self.nlp.pos_tag(' '.join(final_sentence))
             print(colorama.Fore.YELLOW+'\n------------------ Identify POS Tagger -------------------------- '+colorama.Fore.RESET)
             print('pos tagger: ', postagger)
             
+            print("-----------------------------------------------")
+            print ("Parse: ", self.nlp.parse(user_message))
+            #https://github.com/ayat-rashad/ayat-rashad.github.io/blob/master/triples.ipynb
+            sent = 'A rare black squirrel has become a regular visitor to a suburban garden'
+            t = list(self.nlp.parse(sent))
+            t = ParentedTree.convert(t)
+            for s in t.subtrees(lambda t: t.label() == 'NP'):
+                for n in s.subtrees(lambda n: n.label().startswith('NN')):
+                    print(self.find_attrs(n)) 
+                                 
             # Add all NOUNs into list 
             nounEntityList = [] 
             for pos in postagger:
                 if pos[1] in ('NN','NNS','NNP','NNPS'):
                     nounEntityList.append(pos[0])
             print(colorama.Fore.GREEN+'\n------------------ Added NOUN into Entity List ------------------------- '+colorama.Fore.RESET) 
-            print(nounEntityList, '\n')
-            
-            #depparse = self.nlp.dependency_parse(' '.join(final_sentence))
-            #print(depparse)
+            print(nounEntityList, '\n')                    
             
             botresponse = self.mybot.respond(user_message)
-            print ('# Bot > ' + botresponse)
+            #print ('# Bot > ' + botresponse)
             
             responseAnswer = '' 
             # Template-based mode
@@ -135,7 +147,7 @@ class ChatBot:
                 # KB Searching mode  #
                 ######################
                 ans = ''
-                ans = kb.kdd_search(nounEntityList)
+                ans = kb.kdd_search(nounEntityList, ' '.join(final_sentence))
                 if ans != '':
                     responseAnswer = ans.encode('utf-8')
                 else:
@@ -178,10 +190,61 @@ class ChatBot:
         os.remove(self.save_file) if os.path.exists(self.save_file) else None
         os.remove(self.shelve_file) if os.path.exists(self.shelve_file) else None
         self.mybot.bootstrap(learnFiles=self.load_file, commands='load aiml b')
-
+        
+    def find_subject(t):
+        print("************* find me*******************")
+        for s in t.subtrees(lambda t: t.label() == 'NP'):
+            for n in s.subtrees(lambda n: n.label().startswith('NN')):                
+                return (n[0], self.find_attrs(n))
+    
+    def find_predicate(t):    
+        v = None
+        for s in t.subtrees(lambda t: t.label() == 'VP'):
+            for n in s.subtrees(lambda n: n.label().startswith('VB')):
+                v = n
+            return (v[0], self.find_attrs(v))
+    
+    def find_object(t):    
+        for s in t.subtrees(lambda t: t.label() == 'VP'):
+            for n in s.subtrees(lambda n: n.label() in ['NP', 'PP', 'ADJP']):
+                if n.label() in ['NP', 'PP']:
+                    for c in n.subtrees(lambda c: c.label().startswith('NN')):
+                        return (c[0], self.find_attrs(c))
+                else:
+                    for c in n.subtrees(lambda c: c.label().startswith('JJ')):
+                        return (c[0], self.find_attrs(c))
+                
+    def find_attrs(node):
+        attrs = []
+        p = node.parent()
+        
+        # Search siblings
+        if node.label().startswith('JJ'):
+            for s in p:
+                if s.label() == 'RB':
+                    attrs.append(s[0])                
+        elif node.label().startswith('NN'):
+            for s in p:
+                if s.label() in ['DT','PRP$','POS','JJ','CD','ADJP','QP','NP']:
+                    attrs.append(' '.join(s.flatten()))
+        elif node.label().startswith('VB'):
+            for s in p:
+                if s.label() == 'ADVP':
+                    attrs.append(' '.join(s.flatten()))
+                    
+        # Search uncles
+        if node.label().startswith('JJ') or node.label().startswith('NN'):
+            for s in p.parent():
+                if s != p and s.label() == 'PP':
+                    attrs.append(' '.join(s.flatten()))
+        elif node.label().startswith('VB'):
+            for s in p.parent():
+                if s != p and s.label().startswith('VB'):
+                    attrs.append(s[0])
+        return attrs
 
 if __name__ == '__main__':
-    bot = ChatBot()	
+    bot = ChatBot()
     while True:		
         user_message = raw_input('User > ')
         print ('Bot > ' + bot.response(user_message))
