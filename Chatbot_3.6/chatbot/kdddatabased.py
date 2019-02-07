@@ -19,7 +19,7 @@ def kdd_search(nounEntityList, user_input_text):
         connection = mysql.connector.connect(host='localhost',
                                  database='aichatbot',
                                  user='root',
-                                 password='')
+                                 password='soho123')
                                  
         if connection.is_connected():
            db_Info = connection.get_server_info()

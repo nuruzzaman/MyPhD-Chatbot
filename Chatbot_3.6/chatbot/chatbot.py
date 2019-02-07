@@ -9,6 +9,7 @@ import string
 import json
 
 import tensorflow as tf
+import nltk
 from nltk.corpus import wordnet as wn
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords
@@ -26,10 +27,10 @@ from chatbot.botpredictor import BotPredictor
 class ChatBot:
     """
         Intelligent dialogue model based on-
-        1. Template-based- AIML 
-        2. Knowledge Based- MySQL  
-        3. Web Search 
-        4. Deep Learning: RNN 
+        1. Template-based- AIML
+        2. Knowledge Based- MySQL \\\
+        3. Web Search
+        4. Deep Learning: RNN
     """
     
     # initialize
@@ -49,12 +50,12 @@ class ChatBot:
         knbs_dir = os.path.join(PROJECT_ROOT, 'Data', 'KnowledgeBase')
         res_dir = os.path.join(PROJECT_ROOT, 'Data', 'Result')
     
-        # Initialize the KERNEL 
+        # Initialize the KERNEL
         self.mybot = aiml.Kernel()
         sess = tf.Session()
         self.predictor = BotPredictor(sess, corpus_dir=corp_dir, knbase_dir=knbs_dir, result_dir=res_dir, result_file='basic')
         self.session_id = self.predictor.session_data.add_session()
-                                    
+        
         # Create AI Engine 
         if os.path.isfile("model\AIChatEngine.brn"):
             self.mybot.bootstrap(brainFile = "model\AIChatEngine.brn")            
@@ -86,7 +87,6 @@ class ChatBot:
             #segmented_text = ' '.join(ws.segment(user_message))
             #print('# After Segmentation # >'+segmented_text)
             
-            
             # Init Lemmatization 
             wordnet_lemmatizer = WordNetLemmatizer()
             
@@ -117,16 +117,26 @@ class ChatBot:
             print(colorama.Fore.YELLOW+'\n------------------ Identify POS Tagger -------------------------- '+colorama.Fore.RESET)
             print('pos tagger: ', postagger)
             
-            print("-----------------------------------------------")
-            print ("Parse: ", self.nlp.parse(user_message))
-            #https://github.com/ayat-rashad/ayat-rashad.github.io/blob/master/triples.ipynb
-            sent = 'A rare black squirrel has become a regular visitor to a suburban garden'
-            t = list(self.nlp.parse(sent))
-            t = ParentedTree.convert(t)
-            for s in t.subtrees(lambda t: t.label() == 'NP'):
+            print("-----------------------------------------------------------------------")
+            grammar = r"""
+            NP: {<DT|JJ|NN.*>+}          # Chunk sequences of DT, JJ, NN
+            PP: {<IN><NP>}               # Chunk prepositions followed by NP
+            VP: {<VB.*><NP|PP|CLAUSE>+$} # Chunk verbs and their arguments
+            CLAUSE: {<NP><VP>}           # Chunk NP, VP"""
+            cp = nltk.RegexpParser(grammar)
+            #tree = cp.parse(postagger)
+            #print ("CP: ", cp)
+            tree = cp.parse(postagger)
+            print (tree)
+            
+            for s in tree.subtrees(lambda tree: tree.label() == 'NP'):
+                print("found me NP")
                 for n in s.subtrees(lambda n: n.label().startswith('NN')):
-                    print(self.find_attrs(n)) 
-                                 
+                    print("found me NN")
+            print("-----------------------------------------------------------------------")
+            #https://github.com/ayat-rashad/ayat-rashad.github.io/blob/master/triples.ipynb
+            
+            
             # Add all NOUNs into list 
             nounEntityList = [] 
             for pos in postagger:
