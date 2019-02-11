@@ -70,7 +70,7 @@ class ChatBot:
             'pipelineLanguage': 'en',
             'outputFormat': 'json'
         }
-         
+
 ################################################################
             
     def response(self, user_message):
@@ -128,6 +128,7 @@ class ChatBot:
             #print ("CP: ", cp)
             tree = cp.parse(postagger)
             print (tree)
+            print(self.find_subject(tree) )
             
             for s in tree.subtrees(lambda tree: tree.label() == 'NP'):
                 print("found me NP")
