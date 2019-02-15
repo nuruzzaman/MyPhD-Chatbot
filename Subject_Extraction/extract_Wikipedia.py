@@ -220,7 +220,7 @@ while 1:
     inp.close()
     #run coreNLP
     print "wait for sometime! Running coreNLP."
-    commands.getstatusoutput('java -cp "stanford-corenlp-full-2015-04-20/*" -Xmx2g edu.stanford.nlp.pipeline.StanfordCoreNLP -annotators tokenize,ssplit,pos,lemma,ner,parse,dcoref -file input.txt')
+    commands.getstatusoutput('java -cp "stanford-corenlp-full-2018-10-05/*" -Xmx2g edu.stanford.nlp.pipeline.StanfordCoreNLP -annotators tokenize,ssplit,pos,lemma,ner,parse,dcoref -file input.txt')
     xmldoc = minidom.parse("input.txt.xml")# parse the xml document
     sentences = xmldoc.getElementsByTagName('sentence')
     extract_triplets(sentences)

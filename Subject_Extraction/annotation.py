@@ -1,10 +1,7 @@
 import nltk
 from nltk.corpus import stopwords
 
-text = """The Buddha, the Godhead, resides quite as comfortably in the circuits of a digital
-computer or the gears of a cycle transmission as he does at the top of a mountain
-or in the petals of a flower. To think otherwise is to demean the Buddha...which is
-to demean oneself."""
+text = """A chatbot (also known as a smartbot, talkbot, chatterbot, Bot, IM bot, interactive agent, conversational interface or artificial conversational entity) is a computer program or an artificial intelligence which conducts a conversation via auditory or textual methods."""
 
 # Used when tokenizing words
 sentence_re = r'''(?x)      # set flag to allow verbose regexps
@@ -32,17 +29,16 @@ chunker = nltk.RegexpParser(grammar)
 toks = nltk.word_tokenize(text)
 #toks = nltk.regexp_tokenize(text, sentence_re)
 postoks = nltk.tag.pos_tag(toks)
-
-print (postoks)
+#print (postoks)
 
 tree = chunker.parse(postoks)
-
 stopwords = stopwords.words('english')
 
 
 def leaves(tree):
     """Finds NP (nounphrase) leaf nodes of a chunk tree."""
     for subtree in tree.subtrees(filter = lambda t: t.node=='NP'):
+        print(t.node)
         yield subtree.leaves()
 
 def normalise(word):
@@ -57,3 +53,7 @@ def acceptable_word(word):
     accepted = bool(2 <= len(word) <= 40
         and word.lower() not in stopwords)
     return accepted
+
+
+#print(tree)
+

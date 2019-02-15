@@ -70,7 +70,9 @@ def extract_subject(document):
     # and most frequent nouns. It takes the first element in the list
     subject_nouns = [entity for entity in top_10_entities
                     if entity.split()[0] in most_freq_nouns]
-    print subject_nouns
+    print("-----------------------------------")
+    print (subject_nouns)
+    print("-----------------------------------")
     return subject_nouns[0]
 
 def trained_tagger(existing=False):
