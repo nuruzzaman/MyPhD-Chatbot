@@ -118,22 +118,20 @@ class ChatBot:
             print('pos tagger: ', postagger)
             
             print("-----------------------------------------------------------------------")
-            grammar = r"""
-            NP: {<DT|JJ|NN.*>+}          # Chunk sequences of DT, JJ, NN
-            PP: {<IN><NP>}               # Chunk prepositions followed by NP
-            VP: {<VB.*><NP|PP|CLAUSE>+$} # Chunk verbs and their arguments
-            CLAUSE: {<NP><VP>}           # Chunk NP, VP"""
+            grammar = r"""Chunk: {<RB.?>*<VB.?>*<NNP>+<NN>?}"""
             cp = nltk.RegexpParser(grammar)
             #tree = cp.parse(postagger)
             #print ("CP: ", cp)
             tree = cp.parse(postagger)
-            print (tree)
-            print(self.find_subject(tree) )
+            print (tree)           
             
-            for s in tree.subtrees(lambda tree: tree.label() == 'NP'):
-                print("found me NP")
-                for n in s.subtrees(lambda n: n.label().startswith('NN')):
-                    print("found me NN")
+            for word, pos in postagger:
+                if pos=='NNP':
+                    print (word)
+            
+            
+            
+            
             print("-----------------------------------------------------------------------")
             #https://github.com/ayat-rashad/ayat-rashad.github.io/blob/master/triples.ipynb
             
