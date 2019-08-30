@@ -42,7 +42,15 @@ If the search does not find answer, go to step four.
 Step 4: Neural Network
 The next-generation dialogue engine based on the Seq2Seq model not only trains the best answer in the existing answer, but can create a human-like answer. 
 
-Dataset:
+Original Cornell Dataset: [cleaned it using Python script] 
+http://www.cs.cornell.edu/~cristian/Cornell_Movie-Dialogs_Corpus.html
+
+Reddit Dataset:
+https://www.reddit.com/r/datasets/comments/3bxlg7/i_have_every_publicly_available_reddit_comment/
+
+Pre-trained Dataset:
 https://drive.google.com/file/d/1mVWFScBHFeA7oVxQzWb8QbKfTi3TToUr/view
 
+Standford NLP
+https://stanfordnlp.github.io/CoreNLP/
 
