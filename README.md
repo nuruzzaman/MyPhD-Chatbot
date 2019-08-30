@@ -2,7 +2,7 @@
 ### Installation 
 pip install -r requirements.txt
 
-$ pip install jieba
+$ pip install tensorflow==1.4
 $ pip install aiml
 $ pip install lxml
 $ pip install beautifulsoup4
@@ -10,9 +10,9 @@ $ pip install flask
 
 
 ### Running Server  
-Working directory: chatbot_2.7/core
+Working directory: chatbot_3.6/core
 ```
-$ cd chatbot_2.7/core
+$ cd chatbot_3.6/core
 $ python web/server.py (nohub)
 
 > ......
@@ -30,13 +30,10 @@ Exception handling: the problem is too long, a blank question, no response can b
 Emotional answer: expression, praise, ridicule...
 If the match does not match, go to step three.
 
-Step 3: Internet Search (WebQA)
-News----Sina News
+Step 3: Internet Searching
 Article----A daily article
 Jokes----Anecdote
-Time----Sogou time
-Weather----Sogou weather
-Air----Sogou Air
+Weather----weather
 If the search does not find answer, go to step four.
 
 Step 4: Neural Network
