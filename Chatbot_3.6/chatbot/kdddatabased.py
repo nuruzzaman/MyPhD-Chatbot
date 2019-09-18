@@ -83,10 +83,8 @@ def kdd_search(nounEntityList, user_input_text):
                    ans_reply = queryResultList[0][4]
                else:
                    ans_reply = ''                            
-           
-           # Update databse that how many times question being answered  
-           
-           # Calculate Jaccard similarity
+                      
+           # Get Jaccard similarity
            similarity_ratio = token_match(user_input_text, ans_reply)
            print(ans_reply,"\t", similarity_ratio)
     

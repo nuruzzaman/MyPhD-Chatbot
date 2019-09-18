@@ -156,7 +156,7 @@ class ChatBot:
                 # KB Searching mode  #
                 ######################
                 ans = ''
-                ans = kb.kdd_search(nounEntityList, ' '.join(final_sentence))
+                #ans = kb.kdd_search(nounEntityList, ' '.join(final_sentence))
                 if ans != '':
                     responseAnswer = ans.encode('utf-8')
                 else:

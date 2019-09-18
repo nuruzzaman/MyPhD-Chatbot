@@ -11,11 +11,44 @@
 	<category>
         <pattern>SERVER STARTED</pattern>
         <template>
-            Yes
+			IntelliBot is running. Let's start conversation. 
+		</template>
+    </category>
+	
+	<category>
+        <pattern>MAX</pattern>
+        <template>
+				You have entered maximum number of words. Please keep your query short and simple. 
+        </template>
+    </category>
+	<category>
+        <pattern>MIN</pattern>
+        <template>
+				Please tell me more about your query. 
         </template>
     </category>
 	
+	<category>
+        <pattern>CONFIRMATION *</pattern>
+        <template>
+			<think><set name="userConfirmation"><star /></set></think>
+			Do you mean: <get name="userConfirmation"/>
+		</template>
+    </category>
 	
+	<category>
+		<pattern>*</pattern>
+		<that>DO YOU MEAN *</that>
+		<template>
+			@<get name="userConfirmation"/>
+		</template>
+	</category>	
 	
+	<category>
+		<pattern>ASK NEW QUERY</pattern>
+		<template>
+			Ok, You ask me again. 
+		</template>
+	</category>	
 	
 </aiml>

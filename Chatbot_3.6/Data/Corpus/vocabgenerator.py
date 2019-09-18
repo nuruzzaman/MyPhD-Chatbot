@@ -1,14 +1,28 @@
+# Copyright 2017 Bo Shao. All Rights Reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ==============================================================================
 import os
-import colorama
 
-AUG_FOLDER = "Augment"
+AUG0_FOLDER = "Augment0"
+AUG1_FOLDER = "Augment1"
+AUG2_FOLDER = "Augment2"
 
 VOCAB_FILE = "vocab.txt"
 CORNELL_DATA_FILE = "cornell_cleaned_new.txt"
 REDDIT_DATA_FILE = "reddit_cleaned_part.txt"
 EXCLUDED_FILE = "excluded.txt"
 
-colorama.init()
 
 def generate_vocab_file(corpus_dir):
     """
@@ -29,9 +43,13 @@ def generate_vocab_file(corpus_dir):
     for t in ['(', '[', '{', '``', '$']:
         vocab_list.append(t)
 
-    for fd in range(0, -1, -1):
+    for fd in range(2, -1, -1):
         if fd == 0:
-            file_dir = os.path.join(corpus_dir, AUG_FOLDER)
+            file_dir = os.path.join(corpus_dir, AUG0_FOLDER)
+        elif fd == 1:
+            file_dir = os.path.join(corpus_dir, AUG1_FOLDER)
+        else:
+            file_dir = os.path.join(corpus_dir, AUG2_FOLDER)
 
         for data_file in sorted(os.listdir(file_dir)):
             full_path_name = os.path.join(file_dir, data_file)
@@ -50,11 +68,11 @@ def generate_vocab_file(corpus_dir):
                                     t = token.lower()
                                     if t not in vocab_list:
                                         vocab_list.append(t)
-    
-    print(colorama.Fore.GREEN + "Vocab size after all base data files scanned: " + format(len(vocab_list)) + colorama.Fore.RESET)
+
+    print("Vocab size after all base data files scanned: {}".format(len(vocab_list)))
 
     temp_dict = {}  # A temp dict
-    cornell_file = os.path.join(corpus_dir, AUG_FOLDER, CORNELL_DATA_FILE)
+    cornell_file = os.path.join(corpus_dir, AUG0_FOLDER, CORNELL_DATA_FILE)
     if os.path.exists(cornell_file):
         with open(cornell_file, 'r') as f1:
             for line in f1:
@@ -77,9 +95,9 @@ def generate_vocab_file(corpus_dir):
                                         if temp_dict[t] >= 2:
                                             vocab_list.append(t)
 
-    print(colorama.Fore.GREEN + "Vocab size after cornell data file scanned: " +format(len(vocab_list)) + colorama.Fore.RESET)
+    print("Vocab size after cornell data file scanned: {}".format(len(vocab_list)))
 
-    reddit_file = os.path.join(corpus_dir, AUG_FOLDER, REDDIT_DATA_FILE)
+    reddit_file = os.path.join(corpus_dir, AUG0_FOLDER, REDDIT_DATA_FILE)
     if os.path.exists(reddit_file):
         with open(reddit_file, 'r') as f2:
             line_cnt = 0
@@ -114,7 +132,7 @@ def generate_vocab_file(corpus_dir):
         for v in vocab_list:
             f_voc.write("{}\n".format(v))
 
-    print(colorama.Fore.GREEN + "The final vocab file generated. Vocab size: " + format(len(vocab_list)) + colorama.Fore.RESET)
+    print("The final vocab file generated. Vocab size: {}".format(len(vocab_list)))
 
     with open(EXCLUDED_FILE, 'a') as f_excluded:
         for k, _ in temp_dict.items():
@@ -124,5 +142,5 @@ def generate_vocab_file(corpus_dir):
 if __name__ == "__main__":
     from settings import PROJECT_ROOT
 
-    corp_dir = os.path.join(PROJECT_ROOT, '', '')
+    corp_dir = os.path.join(PROJECT_ROOT, 'Data', 'Corpus')
     generate_vocab_file(corp_dir)

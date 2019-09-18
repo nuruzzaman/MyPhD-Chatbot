@@ -187,11 +187,9 @@ class CornellDataCleaner:
 if __name__ == "__main__":
     from settings import PROJECT_ROOT
 
-    corp_dir = os.path.join(PROJECT_ROOT, 'cornell')
+    corp_dir = os.path.join(PROJECT_ROOT, 'Data', 'Corpus')
     cd = CornellDataCleaner(corp_dir)
     print("{} conversations loaded.".format(len(cd.conversations)))
 
-    out_file = os.path.join(corp_dir, 'cornell_cleaned_new.txt')
+    out_file = os.path.join(corp_dir, 'cornell_cleaned.txt')
     cd.write_cleaned_conversations(out_file)
-    print("{} cleaned data generated.")
-

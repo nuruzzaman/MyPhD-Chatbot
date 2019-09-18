@@ -3,24 +3,24 @@
 	<category>
         <pattern>HI</pattern>
         <template>
-				Welcome to UNSW. May I know your name please?
+				Hi, May I know your name please?
         </template>
     </category>
 	<category>
         <pattern>HELLO</pattern>
         <template>
-            Welcome to UNSW. May I know your name please?
+				Hi, May I know your name please?
         </template>
     </category>
 	
 	<category>
 		<pattern>*</pattern>
-			<that>Welcome to UNSW. May I know your name please?</that>
+		<that>HI MAY I KNOW YOUR NAME PLEASE</that>
 		<template>
 			<think><set name="username"><star /></set></think>
 			Nice to meet you, <get name="username"/>. How can I help you?
 		</template>
-	</category>
+	</category>	
 	<category>
 		<pattern>MY NAME IS *</pattern>
 		<template>
@@ -28,39 +28,6 @@
 			Nice to meet you, <get name="username"/>. How can I help you?
 		</template>
 	</category>
-
-	
-	<category>
-        <pattern>HOW ARE YOU</pattern>
-        <template>
-            <random>
-				<li>I'm good. Thank you.</li>
-                <li>I'm fine. How are you?</li>
-            </random>
-        </template>
-    </category>
-	
-	<category>
-        <pattern>WHAT IS YOUR NAME</pattern>
-        <template>
-            <random>
-				<li>I am a AI Chatbot for your assistance. </li>
-                <li>I am a robot!</li>
-                <li>I am your assistance!</li>
-            </random>
-        </template>
-    </category>
-    <category>
-        <pattern>WHO * YOU</pattern>
-        <template>
-            <random>
-				<li>I am a AI Chatbot for your assistance. </li>
-                <li>I am a robot!</li>
-                <li>I am your assistance!</li>
-            </random>
-        </template>
-    </category>
-
 	<category>
         <pattern>* MY NAME</pattern>
         <template>
@@ -72,24 +39,86 @@
         </template>
     </category>
 	
-    <category>
-        <pattern>* MORNING</pattern>
+	<category>
+        <pattern>HOW ARE YOU</pattern>
         <template>
             <random>
-                <li>Good morning, <get name="username"/></li>
+				<li>I'm good. Thank you.</li>
+                <li>I'm fine. How are you?</li>
             </random>
         </template>
     </category>
-
+	<category>
+        <pattern>WHAT IS MY NAME</pattern>
+        <template>
+            <random>
+				<li>Your name is <get name="username"/></li>
+                <li>You are <get name="username"/></li>
+                <li><get name="username"/></li>
+            </random>
+        </template>
+    </category>
+	<category>
+        <pattern>WHAT IS YOUR NAME</pattern>
+        <template>
+            <random>
+				<li>I am a IntelliBot for your assistance. </li>
+                <li>I am a robot, called IntelliBot.</li>
+                <li>I am your assistance! You can call me: IntelliBot</li>
+            </random>
+        </template>
+    </category>
     <category>
-        <pattern>* EVENING</pattern>
+        <pattern>WHO * YOU</pattern>
+        <template>
+            <random>
+				<li>I am a IntelliBot for your assistance. </li>
+                <li>I am a robot, called IntelliBot.</li>
+                <li>I am your assistance! You can call me: IntelliBot</li>
+            </random>
+        </template>
+    </category>
+	<category>
+        <pattern>TELL ME ABOUT YOU</pattern>
+        <template>
+            <random>
+				<li>My name is IntelliBot. </li>
+            </random>
+        </template>
+    </category>
+	<category>
+        <pattern>TELL ME MORE ABOUT YOU</pattern>
+        <template>
+            <random>
+				<li>Thank for for your interest <get name="username"/>, 
+				I am a computer program designed by Deep Neural Network to simulate conversation with human. </li>
+            </random>
+        </template>
+    </category>
+    <category>
+        <pattern>GOOD MORNING</pattern>
+        <template>
+            <random>
+                <li>Good Morning, <get name="username"/></li>
+            </random>
+        </template>
+    </category>
+	<category>
+        <pattern>GOOD AFTERNOON</pattern>
+        <template>
+            <random>
+                <li>Good Afternoon, <get name="username"/></li>
+            </random>
+        </template>
+    </category>
+    <category>
+        <pattern>GOOD EVENING</pattern>
         <template>
             <random>
                 <li>Good Evening, <get name="username"/></li>
             </random>
         </template>
     </category>
-
 	 <category>
         <pattern>THANK YOU</pattern>
         <template>
@@ -98,14 +127,13 @@
             </random>
         </template>
     </category>
-	
     <category>
         <pattern>BYE</pattern>
         <template>
             <random>
                 <li>Bye bye, <get name="username"/></li>
                 <li>Goodbye, <get name="username"/></li>
-                <li>bye~ <get name="username"/></li>
+                <li>See you again~ <get name="username"/></li>
             </random>
         </template>
     </category>
