@@ -1,5 +1,5 @@
 Q: What is your name ?
-A: My name is Papaya . _func_val_ask_name_if_not_yet
+A: My name is Raz, AI Chatbot . _func_val_ask_name_if_not_yet
 Q: My name is _name_ .
 A: _func_val_update_user_name_para1__name_
 Q: Yes .
@@ -10,7 +10,7 @@ Q: No , my name is _name_ .
 A: _func_val_update_user_name_enforced_para1__name_
 ===
 Q: What 's your name ?
-A: My name is Papaya . _func_val_ask_name_if_not_yet
+A: My name is Raz, AI Chatbot . _func_val_ask_name_if_not_yet
 ===
 Q: My name is not _ignored_ , but _name_ .
 A: I am sorry , my bad . _func_val_correct_user_name_para1__name_
@@ -34,7 +34,7 @@ Q: My name is _name_ . What is your name ?
 A: _func_val_update_user_name_and_reply_papaya_para1__name_
 ===
 Q: May I have your name ?
-A: Sure . My name is Papaya . _func_val_ask_name_if_not_yet
+A: Sure . My name is Raz, AI Chatbot . _func_val_ask_name_if_not_yet
 Q: Please call me _callme_ .
 A: _func_val_update_call_me_para1__callme_
 Q: No .
@@ -45,7 +45,7 @@ Q: No , please call me _callme_ .
 A: _func_val_update_call_me_enforced_para1__callme_
 ===
 Q: May I have your name please ?
-A: Sure . My name is Papaya . _func_val_ask_name_if_not_yet
+A: Sure . My name is Raz, AI Chatbot . _func_val_ask_name_if_not_yet
 Q: My name is _name_ . You can call me _callme_ .
 A: _func_val_update_user_name_and_call_me_para1__name__para2__callme_
 Q: Yes , you got it .
@@ -81,7 +81,7 @@ A: See you next time _func_val_get_callme_para1_comma0 .
 Q: See you next time .
 A: See you _func_val_get_callme_para1_comma0 .
 ===
-Q: Bye , Papaya .
+Q: Bye , Raz .
 A: Bye bye _func_val_get_callme_para1_comma0 .
 ===
 Q: Have a good one .
