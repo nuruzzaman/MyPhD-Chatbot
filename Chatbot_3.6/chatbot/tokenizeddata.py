@@ -1,7 +1,7 @@
 import codecs
 import os
 import tensorflow as tf
-import colorama
+
 from collections import namedtuple
 from tensorflow.python.ops import lookup_ops
 
@@ -10,12 +10,13 @@ from chatbot.hparams import HParams
 COMMENT_LINE_STT = "#=="
 CONVERSATION_SEP = "==="
 
-AUG_FOLDER = "Augment"
+AUG0_FOLDER = "Augment0"
+AUG1_FOLDER = "Augment1"
+AUG2_FOLDER = "Augment2"
 
 MAX_LEN = 1000  # Assume no line in the training data is having more than this number of characters
 VOCAB_FILE = "vocab.txt"
 
-colorama.init()
 
 class TokenizedData:
     def __init__(self, corpus_dir, hparams=None, training=True, buffer_size=8192):
@@ -165,10 +166,14 @@ class TokenizedData:
                             target_sequence_length=None)
 
     def _load_corpus(self, corpus_dir):
-        for fd in range(0, -1, -1):
+        for fd in range(2, -1, -1):
             file_list = []
             if fd == 0:
-                file_dir = os.path.join(corpus_dir, AUG_FOLDER)
+                file_dir = os.path.join(corpus_dir, AUG0_FOLDER)
+            elif fd == 1:
+                file_dir = os.path.join(corpus_dir, AUG1_FOLDER)
+            else:
+                file_dir = os.path.join(corpus_dir, AUG2_FOLDER)
 
             for data_file in sorted(os.listdir(file_dir)):
                 full_path_name = os.path.join(file_dir, data_file)
