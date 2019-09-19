@@ -94,7 +94,7 @@ class ChatBot:
         # Limit word count
         if len(user_message) > 100:
             return self.mybot.respond('MAX')
-        elif len(user_message) == 0:
+        elif len(user_message) < 2:
             return self.mybot.respond('MIN')
         
         # Filter sensitive words
@@ -114,11 +114,14 @@ class ChatBot:
         botresponse = self.mybot.respond(gec_message)
         print ('# Bot1  --> ' + botresponse)
         
-        if botresponse[0]=='@':            
-            botresponse = botresponse.replace('@','')
-            botresponse = self.mybot.respond(botresponse)
-            print('2222--> '+botresponse)
-        
+        if botresponse[0]=='@':
+            botresponse = botresponse.replace('@','')            
+            print('After Confirmation--> '+botresponse)
+            if gec_message =='Yes':
+                botresponse = self.mybot.respond(botresponse)
+            else:
+                return self.mybot.respond('ASK NEW QUERY')
+            
         # Initialize Lemmatization
         wordnet_lemmatizer = WordNetLemmatizer()
         
