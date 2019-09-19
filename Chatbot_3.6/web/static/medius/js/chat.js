@@ -1,4 +1,5 @@
 function chat(message) {
+	console.log("Hello world!");
     $.ajax({
         url: "chat",
         type: "GET",
@@ -28,9 +29,18 @@ function key_up() {
     }
 }
 
+function fit_screen() {
+    $('.speak_box, .speak_window').animate({scrollTop: $('.speak_box').height()}, 500);
+}
+
+function auto_width() {
+    $('.question_text').css('max-width', $('.question').width() - 60);
+}
+
 function send_message() {
     $('.write_list').remove();
-    var text = $('.chat_box input').val();
+    var userInput = $('.chat_box input').val();
+	var text = userInput.charAt(0).toUpperCase() + userInput.substring(1);
     if (text == '') {
         alert('please enter your message');
         $('.chat_box input').focus();
@@ -48,12 +58,4 @@ function send_message() {
         auto_width();
         chat(text);
     }
-}
-
-function fit_screen() {
-    $('.speak_box, .speak_window').animate({scrollTop: $('.speak_box').height()}, 500);
-}
-
-function auto_width() {
-    $('.question_text').css('max-width', $('.question').width() - 60);
 }
