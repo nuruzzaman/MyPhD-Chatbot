@@ -59,6 +59,17 @@
         </template>
     </category>
 	<category>
+        <pattern>* WHAT IS MY NAME</pattern>
+        <template>
+            <random>
+				<li>Your name is <get name="username"/></li>
+                <li>You are <get name="username"/></li>
+                <li><get name="username"/></li>
+            </random>
+        </template>
+    </category>
+	
+	<category>
         <pattern>WHAT IS YOUR NAME</pattern>
         <template>
             <random>
