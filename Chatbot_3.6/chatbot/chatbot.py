@@ -8,7 +8,8 @@ import sys
 import string
 import json
 import random
-
+import csv
+import re
 import language_check
 
 import tensorflow as tf
@@ -86,7 +87,7 @@ class ChatBot:
         self.tool = language_check.LanguageTool('en-US')
         
 
-################################################################
+# ###########################################################
 
     def response(self, user_message):
         print('# User -->: '+user_message)
@@ -97,26 +98,61 @@ class ChatBot:
         elif len(user_message) < 2:
             return self.mybot.respond('MIN')
         
-        # Filter sensitive words
+        # **************************************************
+        #       Filter sensitive words
+        # **************************************************
         #message = self.gfw.filter(message, "*")
         #if message.find("*") != -1:
             #return self.mybot.respond('FILTER')
-            
-        # Grammar Error Check and Prompt to User
+        
+        # **************************************************
+        #       Manage Short form words 
+        # **************************************************
+        user_string = user_message.split(" ")
+        j = 0
+        for _str in user_string:
+            # File path which consists of Abbreviations.
+            fileName = "C:\\workspace-chatbot\\UI\\MyPhD-Chatbot\\Chatbot_3.6\\Data\\abbreviation_data.txt"
+            # File Access mode [Read Mode]
+            accessMode = "r"
+            with open(fileName, accessMode) as myCSVfile:
+                # Reading file as CSV with delimiter as "=", so that abbreviation are stored in row[0] and phrases in row[1]
+                dataFromFile = csv.reader(myCSVfile, delimiter="=")
+                # Removing Special Characters.
+                _str = re.sub('[^a-zA-Z0-9-_.]', '', _str)
+                for row in dataFromFile:
+                    # Check if selected word matches short forms[LHS] in text file.
+                    if _str.upper() == row[0]:
+                        # If match found replace it with its appropriate phrase in text file.
+                        user_string[j] = row[1]
+                myCSVfile.close()
+            j = j + 1
+        # Replacing commas with spaces for final output.
+        user_message = ' '.join(user_string)
+        print('# Abbreviation message -->: '+user_message)
+        
+        
+        
+        # **************************************************
+        #       Grammar Error Check and Prompt to User
+        # **************************************************
         gec_message = self.checkGrammarError(user_message)
-        print('Correction -->: '+gec_message)
+        print('# Correction -->: '+gec_message)
         matches = self.tool.check(user_message)
         if(len(matches)>0):
             return self.mybot.respond('Confirmation '+ gec_message)
         
-        # Start Conversation
+        
+        # **************************************************
+        #       Start Conversation
+        # **************************************************
         responseAnswer = ''
         botresponse = self.mybot.respond(gec_message)
         print ('# Bot1  --> ' + botresponse)
         
         if botresponse[0]=='@':
-            botresponse = botresponse.replace('@','')            
-            print('After Confirmation--> '+botresponse)
+            botresponse = botresponse.replace('@','')
+            print('# After Confirmation--> '+botresponse)
             if gec_message =='Yes':
                 botresponse = self.mybot.respond(botresponse)
             else:
@@ -182,29 +218,35 @@ class ChatBot:
             responseAnswer = botresponse
         
         # 2: KB Searching Strategy
-        elif botresponse.find('#NONE#') != -1:
-            print('KB Searching Strategy')
+        elif botresponse.find('#NONE#') != -1:            
             nounEntityList.remove('#NONE')
             ans = ''
             ans = kb.kdd_search(nounEntityList, ' '.join(final_sentence), gec_message)
             if ans != '':
+                print('KB Searching Strategy')
                 responseAnswer = ans.encode('utf-8')
             
             # 3: Internet Retrieval Strategy
-            else:
-                print('Internet Retrieval Strategy')
-                #ans = crawler.web_search(gec_user_message)
-                
+            else:                
+                #ans = crawler.web_search(gec_message)
                 if ans != '':
+                    print('Internet Retrieval Strategy')
                     responseAnswer = ans.encode('utf-8')
                     
                 # 4: Generative Strategy- RNN
-                else:
-                    print('Generative Strategy')
-                    ans = deep.neural_network(self, gec_message)
-                    responseAnswer = ans.encode('utf-8')                    
+                else:                    
+                    if gec_message =='Yes':                        
+                        confirm_mgs = botresponse.replace('#NONE#:','')                    
+                        ans = deep.neural_network(self, confirm_mgs)
+                        print('Generative Strategy with - YES')
+                        print(confirm_mgs)
+                    else:
+                        ans = deep.neural_network(self, gec_message)
+                        print('Generative Strategy')
+                        
+                    responseAnswer = ans.encode('utf-8')
         
-        # 5: Learning Mode
+        # Learning Mode
         elif result.find('#LEARN#') != -1:
             question = result[8:]
             answer = message
@@ -250,7 +292,7 @@ class ChatBot:
         os.remove(self.shelve_file) if os.path.exists(self.shelve_file) else None
         self.mybot.bootstrap(learnFiles=self.load_file, commands='load aiml b')
         
-
+    
 if __name__ == '__main__':
     bot = ChatBot()
     while True:		

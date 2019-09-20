@@ -47,7 +47,7 @@ def kdd_search(nounEntityList, user_input_text, gec_message):
                    response_count = queryResultList[0][1]
                    ans_reply = queryResultList[0][4] 
                    return ans_reply
-               else:                 
+               else:
                    for entity in nounEntityList:
                        mysqlstatement = 'SELECT id, response_count, tag_id, question, response_message, keywords, message_type FROM knowledgebase WHERE question like\'%'+entity+'%\' OR keywords like\'%'+entity+'%\' '
                        dbcursor.execute(mysqlstatement)
@@ -57,7 +57,7 @@ def kdd_search(nounEntityList, user_input_text, gec_message):
                            row_count = row_count + dbcursor.rowcount
                            #print(row_count)
                            
-                   print(colorama.Fore.YELLOW+'\n---------------- Database Query Result ----------------- '+colorama.Fore.RESET)
+                   print(colorama.Fore.YELLOW+'\n---------------- Query Knowledge-based(KB) ----------------- '+colorama.Fore.RESET)
                    i=0
                    for result in queryResultList:
                        i = i+1
@@ -153,7 +153,7 @@ def sqlforMinimizeRecords(nounEntityList, no_duplicate, dbcursor):
         row_count = dbcursor.rowcount
         
     if (row_count >0):
-        print(colorama.Fore.YELLOW+'---------------- SQL for Minimize Records ----------------- '+colorama.Fore.RESET)
+        print(colorama.Fore.YELLOW+'---------------- Query Generator for Minimize Records ----------------- '+colorama.Fore.RESET)
         print(qres)
         ans_reply = qres
         print('------------------------------------------------------------\n ')

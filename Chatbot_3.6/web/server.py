@@ -26,7 +26,7 @@ logger = init_log()
 bot = ChatBot()
 app = Flask(__name__, static_url_path='')
 
-########################################
+# ###################################################################
 
 @app.route('/', methods=['GET', 'POST'])
 def view():
@@ -40,7 +40,7 @@ def response():
                 
     if message != '':
         if message.strip() == 'exit' or message.strip() == 'quit':
-            answer = 'Thank you for using Chatbot. Good Bye' 
+            answer = 'Thank you for using IntelliBot. GoodBye' 
         else:
             answer = bot.response(message) 
     return answer

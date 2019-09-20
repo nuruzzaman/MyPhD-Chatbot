@@ -21,4 +21,4 @@ def neural_network(self, message):
 
 
 if __name__ == '__main__':
-    print (rnn_generator('AI Chatbot')) 
+    print (rnn_generator('AI Chatbot: RNN')) 
