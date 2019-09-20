@@ -104,11 +104,43 @@ class ChatBot:
         #message = self.gfw.filter(message, "*")
         #if message.find("*") != -1:
             #return self.mybot.respond('FILTER')
-                 
+        
+        # **************************************************
+        #       Manage Short form words 
+        # **************************************************
+        user_string = user_message.split(" ")
+        j = 0
+        for _str in user_string:
+            # File path which consists of Abbreviations.
+            fileName = "C:\\workspace-chatbot\\UI\\MyPhD-Chatbot\\Chatbot_3.6\\Data\\abbreviation_data.txt"
+            # File Access mode [Read Mode]
+            accessMode = "r"
+            with open(fileName, accessMode) as myCSVfile:
+                # Reading file as CSV with delimiter as "=", so that abbreviation are stored in row[0] and phrases in row[1]
+                dataFromFile = csv.reader(myCSVfile, delimiter="=")
+                # Removing Special Characters.
+                _str = re.sub('[^a-zA-Z0-9-_.]', '', _str)
+                for row in dataFromFile:
+                    # Check if selected word matches short forms[LHS] in text file.
+                    if _str.upper() == row[0]:
+                        # If match found replace it with its appropriate phrase in text file.
+                        user_string[j] = row[1]
+                myCSVfile.close()
+            j = j + 1
+        # Replacing commas with spaces for final output.
+        user_message = ' '.join(user_string)
+        #print('# Abbreviation message -->: '+user_message)
+        
+        
+        
         # **************************************************
         #       Grammar Error Check and Prompt to User
         # **************************************************
-        gec_message = user_message
+        gec_message = self.checkGrammarError(user_message)
+        print('# Correction -->: '+gec_message)
+        matches = self.tool.check(user_message)
+        if(len(matches)>0):
+            return self.mybot.respond('Confirmation '+ gec_message)
         
         
         # **************************************************
@@ -189,7 +221,7 @@ class ChatBot:
         elif botresponse.find('#NONE#') != -1:            
             nounEntityList.remove('#NONE')
             ans = ''
-            #ans = kb.kdd_search(nounEntityList, ' '.join(final_sentence), gec_message)
+            ans = kb.kdd_search(nounEntityList, ' '.join(final_sentence), gec_message)
             if ans != '':
                 print('KB Searching Strategy')
                 responseAnswer = ans.encode('utf-8')
