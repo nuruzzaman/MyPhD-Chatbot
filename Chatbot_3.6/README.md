@@ -1,4 +1,4 @@
-# Medius Health Chatbot Demo 
+# Chatbot Demo 
 AI Based chatbot using Python, AIML, Angular and Bootstrap 
 
 ### Requirements
