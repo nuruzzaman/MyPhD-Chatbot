@@ -6,7 +6,7 @@ import tensorflow as tf
 import colorama
 from bs4 import BeautifulSoup
 from settings import PROJECT_ROOT
-from chatbot.botpredictor import BotPredictor
+from src.botpredictor import BotPredictor
 
 colorama.init()
 

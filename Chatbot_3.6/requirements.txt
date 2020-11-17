@@ -24,10 +24,3 @@ h5py
 scipy
 colorama
 language_check
-
-
-# python -m nltk.downloader punkt
-# python -m nltk.downloader stopwords
-# tensorboard --logdir Data\Result\
-# java -mx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -port 9000 -timeout 15000
-# SET PASSWORD FOR 'root'@'localhost' = PASSWORD('soho1234');

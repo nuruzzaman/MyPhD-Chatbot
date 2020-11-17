@@ -1,5 +1,5 @@
 ﻿
-from chatbot.search import *
+from src.search import *
 
 #####################
 #     Search Web    #

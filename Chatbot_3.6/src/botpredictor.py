@@ -3,12 +3,12 @@ import os
 import string
 import tensorflow as tf
 
-from chatbot.tokenizeddata import TokenizedData
-from chatbot.modelcreator import ModelCreator
-from chatbot.knowledgebase import KnowledgeBase
-from chatbot.sessiondata import SessionData
-from chatbot.patternutils import check_patterns_and_replace
-from chatbot.functiondata import call_function
+from src.tokenizeddata import TokenizedData
+from src.modelcreator import ModelCreator
+from src.knowledgebase import KnowledgeBase
+from src.sessiondata import SessionData
+from src.patternutils import check_patterns_and_replace
+from src.functiondata import call_function
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 

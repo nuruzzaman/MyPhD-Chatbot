@@ -22,11 +22,11 @@ from nltk.tree import ParentedTree, Tree
 from itertools import groupby
 from stanfordcorenlp import StanfordCoreNLP
 #from tool import filter
-import chatbot.crawler as crawler
-import chatbot.deeplearning as deep
-import chatbot.kdddatabased as kb
+import src.crawler as crawler
+import src.deeplearning as deep
+import src.kdddatabased as kb
 from settings import PROJECT_ROOT
-from chatbot.botpredictor import BotPredictor
+from src.botpredictor import BotPredictor
 
 class ChatBot:
     """

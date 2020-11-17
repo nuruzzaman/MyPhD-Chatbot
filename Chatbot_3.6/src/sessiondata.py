@@ -4,7 +4,6 @@ In the case of a production system, the SessionData has to be maintained so that
 can expire and then be cleaned from the memory.
 """
 
-
 class SessionData:
     def __init__(self):
         self.session_dict = {}

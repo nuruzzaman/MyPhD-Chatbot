@@ -1519,3 +1519,256 @@ Use standard file APIs to check for files with this prefix.
 2019-09-19 19:02:08,418 : INFO : {'properties': "{'annotators': 'ssplit,tokenize', 'outputFormat': 'json'}", 'pipelineLanguage': 'en'}
 2019-09-19 19:02:08,427 : INFO : {'properties': "{'annotators': 'pos', 'outputFormat': 'json'}", 'pipelineLanguage': 'en'}
 2019-09-19 19:02:08,479 : INFO : 127.0.0.1 - - [19/Sep/2019 19:02:08] "[37mGET /chat?message=Yes HTTP/1.1[0m" 200 -
+2020-11-17 21:57:11,924 : WARNING : From C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\src\chatbot.py:59: The name tf.Session is deprecated. Please use tf.compat.v1.Session instead.
+
+2020-11-17 21:57:11,939 : WARNING : From C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\src\hparams.py:19: The name tf.gfile.Exists is deprecated. Please use tf.io.gfile.exists instead.
+
+2020-11-17 21:57:11,939 : WARNING : From C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\src\hparams.py:21: The name tf.gfile.GFile is deprecated. Please use tf.io.gfile.GFile instead.
+
+2020-11-17 21:57:12,866 : WARNING : 
+The TensorFlow contrib module will not be included in TensorFlow 2.0.
+For more information, please see:
+  * https://github.com/tensorflow/community/blob/master/rfcs/20180907-contrib-sunset.md
+  * https://github.com/tensorflow/addons
+  * https://github.com/tensorflow/io (for I/O related ops)
+If you depend on functionality not listed there, please file an issue.
+
+2020-11-17 21:57:12,943 : WARNING : From C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\src\botpredictor.py:39: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+2020-11-17 21:57:12,978 : WARNING : From C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\src\tokenizeddata.py:158: DatasetV1.make_initializable_iterator (from tensorflow.python.data.ops.dataset_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `for ... in dataset:` to iterate over a dataset. If using `tf.estimator`, return the `Dataset` object directly from your input function. As a last resort, you can use `tf.compat.v1.data.make_initializable_iterator(dataset)`.
+2020-11-17 21:57:12,985 : WARNING : From C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\src\modelcreator.py:34: The name tf.get_variable_scope is deprecated. Please use tf.compat.v1.get_variable_scope instead.
+
+2020-11-17 21:57:12,985 : WARNING : From C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\src\modelhelper.py:27: The name tf.variable_scope is deprecated. Please use tf.compat.v1.variable_scope instead.
+
+2020-11-17 21:57:12,986 : WARNING : From C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\src\modelhelper.py:28: The name tf.get_variable is deprecated. Please use tf.compat.v1.get_variable instead.
+
+2020-11-17 21:57:12,999 : WARNING : From C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\src\modelhelper.py:35: GRUCell.__init__ (from tensorflow.python.ops.rnn_cell_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+This class is equivalent as tf.keras.layers.GRUCell, and will be replaced by that in Tensorflow 2.0.
+2020-11-17 21:57:13,003 : WARNING : From C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\src\modelhelper.py:57: MultiRNNCell.__init__ (from tensorflow.python.ops.rnn_cell_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+This class is equivalent as tf.keras.layers.StackedRNNCells, and will be replaced by that in Tensorflow 2.0.
+2020-11-17 21:57:13,004 : WARNING : From C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\src\modelcreator.py:157: dynamic_rnn (from tensorflow.python.ops.rnn) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `keras.layers.RNN(cell)`, which is equivalent to this API
+2020-11-17 21:57:13,071 : WARNING : Entity <bound method MultiRNNCell.call of <tensorflow.python.ops.rnn_cell_impl.MultiRNNCell object at 0x000001E21D0946D8>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method MultiRNNCell.call of <tensorflow.python.ops.rnn_cell_impl.MultiRNNCell object at 0x000001E21D0946D8>>: AttributeError: module 'gast' has no attribute 'Index'
+2020-11-17 21:57:13,088 : WARNING : From C:\Users\drnur\.conda\envs\Chatbot_py36\lib\site-packages\tensorflow\python\ops\rnn_cell_impl.py:564: calling Constant.__init__ (from tensorflow.python.ops.init_ops) with dtype is deprecated and will be removed in a future version.
+Instructions for updating:
+Call initializer instance with the dtype argument instead of passing it to the constructor
+2020-11-17 21:57:13,098 : WARNING : From C:\Users\drnur\.conda\envs\Chatbot_py36\lib\site-packages\tensorflow\python\ops\rnn_cell_impl.py:574: calling Zeros.__init__ (from tensorflow.python.ops.init_ops) with dtype is deprecated and will be removed in a future version.
+Instructions for updating:
+Call initializer instance with the dtype argument instead of passing it to the constructor
+2020-11-17 21:57:13,172 : WARNING : Entity <bound method GRUCell.call of <tensorflow.python.ops.rnn_cell_impl.GRUCell object at 0x000001E21CCDCAC8>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method GRUCell.call of <tensorflow.python.ops.rnn_cell_impl.GRUCell object at 0x000001E21CCDCAC8>>: AssertionError: Bad argument number for Name: 3, expecting 4
+2020-11-17 21:57:13,277 : WARNING : Entity <bound method GRUCell.call of <tensorflow.python.ops.rnn_cell_impl.GRUCell object at 0x000001E21D041D30>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method GRUCell.call of <tensorflow.python.ops.rnn_cell_impl.GRUCell object at 0x000001E21D041D30>>: AssertionError: Bad argument number for Name: 3, expecting 4
+2020-11-17 21:57:13,291 : WARNING : From C:\Users\drnur\.conda\envs\Chatbot_py36\lib\site-packages\tensorflow\python\ops\rnn.py:244: add_dispatch_support.<locals>.wrapper (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.where in 2.0, which has the same broadcast rule as np.where
+2020-11-17 21:57:13,371 : WARNING : Entity <bound method Dense.call of <tensorflow.python.layers.core.Dense object at 0x000001E21CFC54A8>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Dense.call of <tensorflow.python.layers.core.Dense object at 0x000001E21CFC54A8>>: AttributeError: module 'gast' has no attribute 'Index'
+2020-11-17 21:57:13,675 : WARNING : Entity <bound method AttentionWrapper.call of <tensorflow.contrib.seq2seq.python.ops.attention_wrapper.AttentionWrapper object at 0x000001E21D0CC438>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method AttentionWrapper.call of <tensorflow.contrib.seq2seq.python.ops.attention_wrapper.AttentionWrapper object at 0x000001E21D0CC438>>: AttributeError: module 'gast' has no attribute 'Index'
+2020-11-17 21:57:13,688 : WARNING : Entity <bound method MultiRNNCell.call of <tensorflow.python.ops.rnn_cell_impl.MultiRNNCell object at 0x000001E21D0E0DA0>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method MultiRNNCell.call of <tensorflow.python.ops.rnn_cell_impl.MultiRNNCell object at 0x000001E21D0E0DA0>>: AttributeError: module 'gast' has no attribute 'Index'
+2020-11-17 21:57:13,782 : WARNING : Entity <bound method GRUCell.call of <tensorflow.python.ops.rnn_cell_impl.GRUCell object at 0x000001E21CF66048>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method GRUCell.call of <tensorflow.python.ops.rnn_cell_impl.GRUCell object at 0x000001E21CF66048>>: AssertionError: Bad argument number for Name: 3, expecting 4
+2020-11-17 21:57:13,886 : WARNING : Entity <bound method GRUCell.call of <tensorflow.python.ops.rnn_cell_impl.GRUCell object at 0x000001E21D0B8F28>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method GRUCell.call of <tensorflow.python.ops.rnn_cell_impl.GRUCell object at 0x000001E21D0B8F28>>: AssertionError: Bad argument number for Name: 3, expecting 4
+2020-11-17 21:57:13,952 : WARNING : Entity <bound method Dense.call of <tensorflow.python.layers.core.Dense object at 0x000001E21D0EE4A8>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Dense.call of <tensorflow.python.layers.core.Dense object at 0x000001E21D0EE4A8>>: AttributeError: module 'gast' has no attribute 'Index'
+2020-11-17 21:57:14,005 : WARNING : Entity <bound method Dense.call of <tensorflow.python.layers.core.Dense object at 0x000001E21CCDCE48>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Dense.call of <tensorflow.python.layers.core.Dense object at 0x000001E21CCDCE48>>: AttributeError: module 'gast' has no attribute 'Index'
+2020-11-17 21:57:14,034 : WARNING : From C:\Users\drnur\.conda\envs\Chatbot_py36\lib\site-packages\tensorflow\contrib\seq2seq\python\ops\beam_search_decoder.py:985: to_int64 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.cast` instead.
+2020-11-17 21:57:14,178 : WARNING : From C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\src\modelcreator.py:97: The name tf.train.Saver is deprecated. Please use tf.compat.v1.train.Saver instead.
+
+2020-11-17 21:57:14,198 : WARNING : From C:\Users\drnur\.conda\envs\Chatbot_py36\lib\site-packages\tensorflow\python\training\saver.py:1276: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+2020-11-17 21:57:14,201 : INFO : Restoring parameters from C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\Data\Result\basic
+2020-11-17 21:57:14,644 : INFO : Using an existing server http://localhost:9000
+2020-11-17 21:57:17,675 : INFO : Waiting until the server is available.
+2020-11-17 21:57:20,678 : INFO : Waiting until the server is available.
+2020-11-17 21:57:23,679 : INFO : Waiting until the server is available.
+2020-11-17 21:57:26,682 : INFO : Waiting until the server is available.
+2020-11-17 21:57:29,693 : INFO : Waiting until the server is available.
+2020-11-17 21:57:32,699 : INFO : Waiting until the server is available.
+2020-11-17 21:57:35,706 : INFO : Waiting until the server is available.
+2020-11-17 21:57:38,712 : INFO : Waiting until the server is available.
+2020-11-17 21:57:41,719 : INFO : Waiting until the server is available.
+2020-11-17 21:57:44,728 : INFO : Waiting until the server is available.
+2020-11-17 21:57:47,732 : INFO : Waiting until the server is available.
+2020-11-17 21:57:50,735 : INFO : Waiting until the server is available.
+2020-11-17 21:57:53,747 : INFO : Waiting until the server is available.
+2020-11-17 21:57:56,751 : INFO : Waiting until the server is available.
+2020-11-17 21:57:59,754 : INFO : Waiting until the server is available.
+2020-11-17 21:58:02,757 : INFO : Waiting until the server is available.
+2020-11-17 21:58:05,762 : INFO : Waiting until the server is available.
+2020-11-17 21:58:08,767 : INFO : Waiting until the server is available.
+2020-11-17 21:58:11,772 : INFO : Waiting until the server is available.
+2020-11-17 21:58:14,775 : INFO : Waiting until the server is available.
+2020-11-17 21:58:17,781 : INFO : Waiting until the server is available.
+2020-11-17 21:58:20,785 : INFO : Waiting until the server is available.
+2020-11-17 21:58:23,788 : INFO : Waiting until the server is available.
+2020-11-17 21:58:26,791 : INFO : Waiting until the server is available.
+2020-11-17 21:58:29,793 : INFO : Waiting until the server is available.
+2020-11-17 21:58:32,805 : INFO : Waiting until the server is available.
+2020-11-17 21:58:35,807 : INFO : The server is available.
+2020-11-17 21:58:37,027 : INFO : {'properties': "{'annotators': 'ssplit,tokenize', 'outputFormat': 'json'}", 'pipelineLanguage': 'en'}
+2020-11-17 22:00:27,534 : WARNING : From C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\src\chatbot.py:59: The name tf.Session is deprecated. Please use tf.compat.v1.Session instead.
+
+2020-11-17 22:00:27,558 : WARNING : From C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\src\hparams.py:19: The name tf.gfile.Exists is deprecated. Please use tf.io.gfile.exists instead.
+
+2020-11-17 22:00:27,563 : WARNING : From C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\src\hparams.py:21: The name tf.gfile.GFile is deprecated. Please use tf.io.gfile.GFile instead.
+
+2020-11-17 22:00:28,234 : WARNING : 
+The TensorFlow contrib module will not be included in TensorFlow 2.0.
+For more information, please see:
+  * https://github.com/tensorflow/community/blob/master/rfcs/20180907-contrib-sunset.md
+  * https://github.com/tensorflow/addons
+  * https://github.com/tensorflow/io (for I/O related ops)
+If you depend on functionality not listed there, please file an issue.
+
+2020-11-17 22:00:28,318 : WARNING : From C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\src\botpredictor.py:39: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+2020-11-17 22:00:28,356 : WARNING : From C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\src\tokenizeddata.py:158: DatasetV1.make_initializable_iterator (from tensorflow.python.data.ops.dataset_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `for ... in dataset:` to iterate over a dataset. If using `tf.estimator`, return the `Dataset` object directly from your input function. As a last resort, you can use `tf.compat.v1.data.make_initializable_iterator(dataset)`.
+2020-11-17 22:00:28,362 : WARNING : From C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\src\modelcreator.py:34: The name tf.get_variable_scope is deprecated. Please use tf.compat.v1.get_variable_scope instead.
+
+2020-11-17 22:00:28,363 : WARNING : From C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\src\modelhelper.py:27: The name tf.variable_scope is deprecated. Please use tf.compat.v1.variable_scope instead.
+
+2020-11-17 22:00:28,364 : WARNING : From C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\src\modelhelper.py:28: The name tf.get_variable is deprecated. Please use tf.compat.v1.get_variable instead.
+
+2020-11-17 22:00:28,377 : WARNING : From C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\src\modelhelper.py:35: GRUCell.__init__ (from tensorflow.python.ops.rnn_cell_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+This class is equivalent as tf.keras.layers.GRUCell, and will be replaced by that in Tensorflow 2.0.
+2020-11-17 22:00:28,381 : WARNING : From C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\src\modelhelper.py:57: MultiRNNCell.__init__ (from tensorflow.python.ops.rnn_cell_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+This class is equivalent as tf.keras.layers.StackedRNNCells, and will be replaced by that in Tensorflow 2.0.
+2020-11-17 22:00:28,381 : WARNING : From C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\src\modelcreator.py:157: dynamic_rnn (from tensorflow.python.ops.rnn) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `keras.layers.RNN(cell)`, which is equivalent to this API
+2020-11-17 22:00:28,452 : WARNING : Entity <bound method MultiRNNCell.call of <tensorflow.python.ops.rnn_cell_impl.MultiRNNCell object at 0x000001C6C29295C0>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method MultiRNNCell.call of <tensorflow.python.ops.rnn_cell_impl.MultiRNNCell object at 0x000001C6C29295C0>>: AttributeError: module 'gast' has no attribute 'Index'
+2020-11-17 22:00:28,471 : WARNING : From C:\Users\drnur\.conda\envs\Chatbot_py36\lib\site-packages\tensorflow\python\ops\rnn_cell_impl.py:564: calling Constant.__init__ (from tensorflow.python.ops.init_ops) with dtype is deprecated and will be removed in a future version.
+Instructions for updating:
+Call initializer instance with the dtype argument instead of passing it to the constructor
+2020-11-17 22:00:28,484 : WARNING : From C:\Users\drnur\.conda\envs\Chatbot_py36\lib\site-packages\tensorflow\python\ops\rnn_cell_impl.py:574: calling Zeros.__init__ (from tensorflow.python.ops.init_ops) with dtype is deprecated and will be removed in a future version.
+Instructions for updating:
+Call initializer instance with the dtype argument instead of passing it to the constructor
+2020-11-17 22:00:28,543 : WARNING : Entity <bound method GRUCell.call of <tensorflow.python.ops.rnn_cell_impl.GRUCell object at 0x000001C6C28B79B0>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method GRUCell.call of <tensorflow.python.ops.rnn_cell_impl.GRUCell object at 0x000001C6C28B79B0>>: AssertionError: Bad argument number for Name: 3, expecting 4
+2020-11-17 22:00:28,642 : WARNING : Entity <bound method GRUCell.call of <tensorflow.python.ops.rnn_cell_impl.GRUCell object at 0x000001C6C290C320>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method GRUCell.call of <tensorflow.python.ops.rnn_cell_impl.GRUCell object at 0x000001C6C290C320>>: AssertionError: Bad argument number for Name: 3, expecting 4
+2020-11-17 22:00:28,656 : WARNING : From C:\Users\drnur\.conda\envs\Chatbot_py36\lib\site-packages\tensorflow\python\ops\rnn.py:244: add_dispatch_support.<locals>.wrapper (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.where in 2.0, which has the same broadcast rule as np.where
+2020-11-17 22:00:28,736 : WARNING : Entity <bound method Dense.call of <tensorflow.python.layers.core.Dense object at 0x000001C6C2882898>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Dense.call of <tensorflow.python.layers.core.Dense object at 0x000001C6C2882898>>: AttributeError: module 'gast' has no attribute 'Index'
+2020-11-17 22:00:29,029 : WARNING : Entity <bound method AttentionWrapper.call of <tensorflow.contrib.seq2seq.python.ops.attention_wrapper.AttentionWrapper object at 0x000001C6C294FF60>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method AttentionWrapper.call of <tensorflow.contrib.seq2seq.python.ops.attention_wrapper.AttentionWrapper object at 0x000001C6C294FF60>>: AttributeError: module 'gast' has no attribute 'Index'
+2020-11-17 22:00:29,041 : WARNING : Entity <bound method MultiRNNCell.call of <tensorflow.python.ops.rnn_cell_impl.MultiRNNCell object at 0x000001C6C293AE48>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method MultiRNNCell.call of <tensorflow.python.ops.rnn_cell_impl.MultiRNNCell object at 0x000001C6C293AE48>>: AttributeError: module 'gast' has no attribute 'Index'
+2020-11-17 22:00:29,121 : WARNING : Entity <bound method GRUCell.call of <tensorflow.python.ops.rnn_cell_impl.GRUCell object at 0x000001C6C2782EF0>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method GRUCell.call of <tensorflow.python.ops.rnn_cell_impl.GRUCell object at 0x000001C6C2782EF0>>: AssertionError: Bad argument number for Name: 3, expecting 4
+2020-11-17 22:00:29,213 : WARNING : Entity <bound method GRUCell.call of <tensorflow.python.ops.rnn_cell_impl.GRUCell object at 0x000001C6C295F5F8>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method GRUCell.call of <tensorflow.python.ops.rnn_cell_impl.GRUCell object at 0x000001C6C295F5F8>>: AssertionError: Bad argument number for Name: 3, expecting 4
+2020-11-17 22:00:29,275 : WARNING : Entity <bound method Dense.call of <tensorflow.python.layers.core.Dense object at 0x000001C6C298E7F0>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Dense.call of <tensorflow.python.layers.core.Dense object at 0x000001C6C298E7F0>>: AttributeError: module 'gast' has no attribute 'Index'
+2020-11-17 22:00:29,330 : WARNING : Entity <bound method Dense.call of <tensorflow.python.layers.core.Dense object at 0x000001C6C28B7B70>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Dense.call of <tensorflow.python.layers.core.Dense object at 0x000001C6C28B7B70>>: AttributeError: module 'gast' has no attribute 'Index'
+2020-11-17 22:00:29,362 : WARNING : From C:\Users\drnur\.conda\envs\Chatbot_py36\lib\site-packages\tensorflow\contrib\seq2seq\python\ops\beam_search_decoder.py:985: to_int64 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.cast` instead.
+2020-11-17 22:00:29,511 : WARNING : From C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\src\modelcreator.py:97: The name tf.train.Saver is deprecated. Please use tf.compat.v1.train.Saver instead.
+
+2020-11-17 22:00:29,531 : WARNING : From C:\Users\drnur\.conda\envs\Chatbot_py36\lib\site-packages\tensorflow\python\training\saver.py:1276: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+2020-11-17 22:00:29,534 : INFO : Restoring parameters from C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\Data\Result\basic
+2020-11-17 22:00:29,968 : INFO : Using an existing server http://localhost:9000
+2020-11-17 22:00:30,969 : INFO : The server is available.
+2020-11-17 22:00:31,833 : INFO : {'properties': "{'annotators': 'ssplit,tokenize', 'outputFormat': 'json'}", 'pipelineLanguage': 'en'}
+2020-11-17 22:00:33,539 : INFO : {'properties': "{'annotators': 'pos', 'outputFormat': 'json'}", 'pipelineLanguage': 'en'}
+2020-11-17 22:00:34,388 : INFO :  * Restarting with stat
+2020-11-17 22:00:38,044 : WARNING : From C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\src\chatbot.py:59: The name tf.Session is deprecated. Please use tf.compat.v1.Session instead.
+
+2020-11-17 22:00:38,062 : WARNING : From C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\src\hparams.py:19: The name tf.gfile.Exists is deprecated. Please use tf.io.gfile.exists instead.
+
+2020-11-17 22:00:38,063 : WARNING : From C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\src\hparams.py:21: The name tf.gfile.GFile is deprecated. Please use tf.io.gfile.GFile instead.
+
+2020-11-17 22:00:38,723 : WARNING : 
+The TensorFlow contrib module will not be included in TensorFlow 2.0.
+For more information, please see:
+  * https://github.com/tensorflow/community/blob/master/rfcs/20180907-contrib-sunset.md
+  * https://github.com/tensorflow/addons
+  * https://github.com/tensorflow/io (for I/O related ops)
+If you depend on functionality not listed there, please file an issue.
+
+2020-11-17 22:00:38,794 : WARNING : From C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\src\botpredictor.py:39: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+2020-11-17 22:00:38,826 : WARNING : From C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\src\tokenizeddata.py:158: DatasetV1.make_initializable_iterator (from tensorflow.python.data.ops.dataset_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `for ... in dataset:` to iterate over a dataset. If using `tf.estimator`, return the `Dataset` object directly from your input function. As a last resort, you can use `tf.compat.v1.data.make_initializable_iterator(dataset)`.
+2020-11-17 22:00:38,830 : WARNING : From C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\src\modelcreator.py:34: The name tf.get_variable_scope is deprecated. Please use tf.compat.v1.get_variable_scope instead.
+
+2020-11-17 22:00:38,830 : WARNING : From C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\src\modelhelper.py:27: The name tf.variable_scope is deprecated. Please use tf.compat.v1.variable_scope instead.
+
+2020-11-17 22:00:38,831 : WARNING : From C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\src\modelhelper.py:28: The name tf.get_variable is deprecated. Please use tf.compat.v1.get_variable instead.
+
+2020-11-17 22:00:38,840 : WARNING : From C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\src\modelhelper.py:35: GRUCell.__init__ (from tensorflow.python.ops.rnn_cell_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+This class is equivalent as tf.keras.layers.GRUCell, and will be replaced by that in Tensorflow 2.0.
+2020-11-17 22:00:38,844 : WARNING : From C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\src\modelhelper.py:57: MultiRNNCell.__init__ (from tensorflow.python.ops.rnn_cell_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+This class is equivalent as tf.keras.layers.StackedRNNCells, and will be replaced by that in Tensorflow 2.0.
+2020-11-17 22:00:38,845 : WARNING : From C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\src\modelcreator.py:157: dynamic_rnn (from tensorflow.python.ops.rnn) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `keras.layers.RNN(cell)`, which is equivalent to this API
+2020-11-17 22:00:38,911 : WARNING : Entity <bound method MultiRNNCell.call of <tensorflow.python.ops.rnn_cell_impl.MultiRNNCell object at 0x0000018516A692B0>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method MultiRNNCell.call of <tensorflow.python.ops.rnn_cell_impl.MultiRNNCell object at 0x0000018516A692B0>>: AttributeError: module 'gast' has no attribute 'Index'
+2020-11-17 22:00:38,928 : WARNING : From C:\Users\drnur\.conda\envs\Chatbot_py36\lib\site-packages\tensorflow\python\ops\rnn_cell_impl.py:564: calling Constant.__init__ (from tensorflow.python.ops.init_ops) with dtype is deprecated and will be removed in a future version.
+Instructions for updating:
+Call initializer instance with the dtype argument instead of passing it to the constructor
+2020-11-17 22:00:38,937 : WARNING : From C:\Users\drnur\.conda\envs\Chatbot_py36\lib\site-packages\tensorflow\python\ops\rnn_cell_impl.py:574: calling Zeros.__init__ (from tensorflow.python.ops.init_ops) with dtype is deprecated and will be removed in a future version.
+Instructions for updating:
+Call initializer instance with the dtype argument instead of passing it to the constructor
+2020-11-17 22:00:38,995 : WARNING : Entity <bound method GRUCell.call of <tensorflow.python.ops.rnn_cell_impl.GRUCell object at 0x00000185166AAC50>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method GRUCell.call of <tensorflow.python.ops.rnn_cell_impl.GRUCell object at 0x00000185166AAC50>>: AssertionError: Bad argument number for Name: 3, expecting 4
+2020-11-17 22:00:39,091 : WARNING : Entity <bound method GRUCell.call of <tensorflow.python.ops.rnn_cell_impl.GRUCell object at 0x0000018516A69278>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method GRUCell.call of <tensorflow.python.ops.rnn_cell_impl.GRUCell object at 0x0000018516A69278>>: AssertionError: Bad argument number for Name: 3, expecting 4
+2020-11-17 22:00:39,106 : WARNING : From C:\Users\drnur\.conda\envs\Chatbot_py36\lib\site-packages\tensorflow\python\ops\rnn.py:244: add_dispatch_support.<locals>.wrapper (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.where in 2.0, which has the same broadcast rule as np.where
+2020-11-17 22:00:39,196 : WARNING : Entity <bound method Dense.call of <tensorflow.python.layers.core.Dense object at 0x00000185169C3A90>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Dense.call of <tensorflow.python.layers.core.Dense object at 0x00000185169C3A90>>: AttributeError: module 'gast' has no attribute 'Index'
+2020-11-17 22:00:39,499 : WARNING : Entity <bound method AttentionWrapper.call of <tensorflow.contrib.seq2seq.python.ops.attention_wrapper.AttentionWrapper object at 0x0000018516AB0940>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method AttentionWrapper.call of <tensorflow.contrib.seq2seq.python.ops.attention_wrapper.AttentionWrapper object at 0x0000018516AB0940>>: AttributeError: module 'gast' has no attribute 'Index'
+2020-11-17 22:00:39,510 : WARNING : Entity <bound method MultiRNNCell.call of <tensorflow.python.ops.rnn_cell_impl.MultiRNNCell object at 0x0000018516A8EF98>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method MultiRNNCell.call of <tensorflow.python.ops.rnn_cell_impl.MultiRNNCell object at 0x0000018516A8EF98>>: AttributeError: module 'gast' has no attribute 'Index'
+2020-11-17 22:00:39,599 : WARNING : Entity <bound method GRUCell.call of <tensorflow.python.ops.rnn_cell_impl.GRUCell object at 0x00000185169428D0>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method GRUCell.call of <tensorflow.python.ops.rnn_cell_impl.GRUCell object at 0x00000185169428D0>>: AssertionError: Bad argument number for Name: 3, expecting 4
+2020-11-17 22:00:39,690 : WARNING : Entity <bound method GRUCell.call of <tensorflow.python.ops.rnn_cell_impl.GRUCell object at 0x0000018516A9F630>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method GRUCell.call of <tensorflow.python.ops.rnn_cell_impl.GRUCell object at 0x0000018516A9F630>>: AssertionError: Bad argument number for Name: 3, expecting 4
+2020-11-17 22:00:39,749 : WARNING : Entity <bound method Dense.call of <tensorflow.python.layers.core.Dense object at 0x0000018516ACFA58>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Dense.call of <tensorflow.python.layers.core.Dense object at 0x0000018516ACFA58>>: AttributeError: module 'gast' has no attribute 'Index'
+2020-11-17 22:00:39,798 : WARNING : Entity <bound method Dense.call of <tensorflow.python.layers.core.Dense object at 0x00000185169F7C18>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Dense.call of <tensorflow.python.layers.core.Dense object at 0x00000185169F7C18>>: AttributeError: module 'gast' has no attribute 'Index'
+2020-11-17 22:00:39,833 : WARNING : From C:\Users\drnur\.conda\envs\Chatbot_py36\lib\site-packages\tensorflow\contrib\seq2seq\python\ops\beam_search_decoder.py:985: to_int64 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.cast` instead.
+2020-11-17 22:00:39,975 : WARNING : From C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\src\modelcreator.py:97: The name tf.train.Saver is deprecated. Please use tf.compat.v1.train.Saver instead.
+
+2020-11-17 22:00:39,993 : WARNING : From C:\Users\drnur\.conda\envs\Chatbot_py36\lib\site-packages\tensorflow\python\training\saver.py:1276: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+2020-11-17 22:00:39,995 : INFO : Restoring parameters from C:\workspace-bigdata\MyPhD-Chatbot\Chatbot_3.6\Data\Result\basic
+2020-11-17 22:00:40,456 : INFO : Using an existing server http://localhost:9000
+2020-11-17 22:00:41,458 : INFO : The server is available.
+2020-11-17 22:00:42,213 : INFO : {'properties': "{'annotators': 'ssplit,tokenize', 'outputFormat': 'json'}", 'pipelineLanguage': 'en'}
+2020-11-17 22:00:43,684 : INFO : {'properties': "{'annotators': 'pos', 'outputFormat': 'json'}", 'pipelineLanguage': 'en'}
+2020-11-17 22:00:43,716 : WARNING :  * Debugger is active!
+2020-11-17 22:00:43,720 : INFO :  * Debugger PIN: 208-691-335
+2020-11-17 22:00:43,725 : INFO :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-11-17 22:00:54,238 : INFO : 127.0.0.1 - - [17/Nov/2020 22:00:54] "[37mGET / HTTP/1.1[0m" 200 -
+2020-11-17 22:00:54,485 : INFO : 127.0.0.1 - - [17/Nov/2020 22:00:54] "[37mGET /vendor/bootstrap/css/bootstrap.css HTTP/1.1[0m" 200 -
+2020-11-17 22:00:54,611 : INFO : 127.0.0.1 - - [17/Nov/2020 22:00:54] "[37mGET /medius/css/medius-style.css HTTP/1.1[0m" 200 -
+2020-11-17 22:00:54,612 : INFO : 127.0.0.1 - - [17/Nov/2020 22:00:54] "[37mGET /vendor/jquery/jquery-3.3.1.min.js HTTP/1.1[0m" 200 -
+2020-11-17 22:00:54,614 : INFO : 127.0.0.1 - - [17/Nov/2020 22:00:54] "[37mGET /medius/js/chat.js HTTP/1.1[0m" 200 -
+2020-11-17 22:00:54,616 : INFO : 127.0.0.1 - - [17/Nov/2020 22:00:54] "[37mGET /vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 200 -
+2020-11-17 22:00:54,623 : INFO : 127.0.0.1 - - [17/Nov/2020 22:00:54] "[37mGET /vendor/foundation-icons/foundation-icons.css HTTP/1.1[0m" 200 -
+2020-11-17 22:00:54,973 : INFO : 127.0.0.1 - - [17/Nov/2020 22:00:54] "[37mGET /medius/images/bg.png HTTP/1.1[0m" 200 -
+2020-11-17 22:00:54,995 : INFO : 127.0.0.1 - - [17/Nov/2020 22:00:54] "[37mGET /vendor/foundation-icons/foundation-icons.woff HTTP/1.1[0m" 200 -
+2020-11-17 22:00:55,013 : INFO : 127.0.0.1 - - [17/Nov/2020 22:00:55] "[37mGET /medius/images/chat-bg.png HTTP/1.1[0m" 200 -
+2020-11-17 22:00:55,227 : INFO : 127.0.0.1 - - [17/Nov/2020 22:00:55] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2020-11-17 22:00:56,799 : INFO : {'properties': "{'annotators': 'ssplit,tokenize', 'outputFormat': 'json'}", 'pipelineLanguage': 'en'}
+2020-11-17 22:00:56,811 : INFO : {'properties': "{'annotators': 'pos', 'outputFormat': 'json'}", 'pipelineLanguage': 'en'}
+2020-11-17 22:00:56,828 : INFO : 127.0.0.1 - - [17/Nov/2020 22:00:56] "[37mGET /chat?message=Hi HTTP/1.1[0m" 200 -
+2020-11-17 22:00:59,367 : INFO : {'properties': "{'annotators': 'ssplit,tokenize', 'outputFormat': 'json'}", 'pipelineLanguage': 'en'}
+2020-11-17 22:00:59,394 : INFO : {'properties': "{'annotators': 'pos', 'outputFormat': 'json'}", 'pipelineLanguage': 'en'}
+2020-11-17 22:00:59,412 : INFO : 127.0.0.1 - - [17/Nov/2020 22:00:59] "[37mGET /chat?message=How%20are%20you HTTP/1.1[0m" 200 -
+2020-11-17 22:01:02,291 : INFO : {'properties': "{'annotators': 'ssplit,tokenize', 'outputFormat': 'json'}", 'pipelineLanguage': 'en'}
+2020-11-17 22:01:02,304 : INFO : {'properties': "{'annotators': 'pos', 'outputFormat': 'json'}", 'pipelineLanguage': 'en'}
+2020-11-17 22:01:02,319 : INFO : 127.0.0.1 - - [17/Nov/2020 22:01:02] "[37mGET /chat?message=What%20is%20your%20name HTTP/1.1[0m" 200 -
+2020-11-17 22:01:15,609 : INFO : {'properties': "{'annotators': 'ssplit,tokenize', 'outputFormat': 'json'}", 'pipelineLanguage': 'en'}
+2020-11-17 22:01:15,655 : INFO : {'properties': "{'annotators': 'pos', 'outputFormat': 'json'}", 'pipelineLanguage': 'en'}
+2020-11-17 22:01:16,656 : INFO : 127.0.0.1 - - [17/Nov/2020 22:01:16] "[37mGET /chat?message=Who%20is%20einstain%3F HTTP/1.1[0m" 200 -
+2020-11-17 22:01:27,492 : INFO : {'properties': "{'annotators': 'ssplit,tokenize', 'outputFormat': 'json'}", 'pipelineLanguage': 'en'}
+2020-11-17 22:01:27,502 : INFO : {'properties': "{'annotators': 'pos', 'outputFormat': 'json'}", 'pipelineLanguage': 'en'}
+2020-11-17 22:01:27,872 : INFO : 127.0.0.1 - - [17/Nov/2020 22:01:27] "[37mGET /chat?message=What%20is%20chatbot%3F HTTP/1.1[0m" 200 -

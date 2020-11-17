@@ -1,5 +1,5 @@
 import tensorflow as tf
-import chatbot.modelhelper as model_helper
+import src.modelhelper as model_helper
 import colorama
 from tensorflow.python.layers import core as layers_core
 
