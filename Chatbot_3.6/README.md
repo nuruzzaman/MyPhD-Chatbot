@@ -81,8 +81,9 @@ https://stanfordnlp.github.io/CoreNLP/
 
 ### Author
 
-***[Mohammad Nuruzzaman](https://github.com/nuruzzaman/)***  
-PhD Candidate at University of New South Wales, Australia 
+***[Mohammad Nuruzzaman, PhD](https://github.com/nuruzzaman/)***  
+University of New South Wales, Australia 
+Currently working as a Data Scientist at ELMO Software Ltd. 
 
 
 ### Additional Resources 
