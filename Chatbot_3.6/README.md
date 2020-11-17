@@ -49,10 +49,10 @@ PhD Candidate at University of New South Wales, Australia
 
 
 ### Additional Resources 
-# python -m nltk.downloader punkt
-# python -m nltk.downloader stopwords
-# import nltk
-# nltk.download('wordnet')
-# tensorboard --logdir Data\Result\
-# java -mx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -port 9000 -timeout 15000
-# SET PASSWORD FOR 'root'@'localhost' = PASSWORD('soho1234');
+	python -m nltk.downloader punkt
+	python -m nltk.downloader stopwords
+	import nltk
+	nltk.download('wordnet')
+	tensorboard --logdir Data\Result\
+	java -mx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -port 9000 -timeout 15000
+	SET PASSWORD FOR 'root'@'localhost' = PASSWORD('soho1234');
